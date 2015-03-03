@@ -19,11 +19,12 @@
 		56348D071AA453F000D30E0D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56348CEF1AA453F000D30E0D /* UIKit.framework */; };
 		56348D0F1AA453F000D30E0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 56348D0D1AA453F000D30E0D /* InfoPlist.strings */; };
 		56348D111AA453F000D30E0D /* MyWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56348D101AA453F000D30E0D /* MyWeiboTests.m */; };
-		569D95FA1AA45C8D00FD0054 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D95F91AA45C8D00FD0054 /* CustomTabBarController.m */; };
-		569D95FD1AA45CEF00FD0054 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D95FC1AA45CEF00FD0054 /* HomeController.m */; };
-		569D96001AA45D0100FD0054 /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D95FF1AA45D0100FD0054 /* MessageController.m */; };
-		569D96031AA45D1400FD0054 /* DiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D96021AA45D1400FD0054 /* DiscoverController.m */; };
-		569D96091AA45D6600FD0054 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D96081AA45D6600FD0054 /* MeController.m */; };
+		56A758FE1AA5607500EB96AD /* DiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758DE1AA5607500EB96AD /* DiscoverController.m */; };
+		56A758FF1AA5607500EB96AD /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758E41AA5607500EB96AD /* HomeController.m */; };
+		56A759001AA5607500EB96AD /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758EA1AA5607500EB96AD /* CustomTabBarController.m */; };
+		56A759011AA5607500EB96AD /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758F01AA5607500EB96AD /* MeController.m */; };
+		56A759021AA5607500EB96AD /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758F61AA5607500EB96AD /* MessageController.m */; };
+		56A759051AA571FF00EB96AD /* UIImage+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759041AA571FF00EB96AD /* UIImage+Custom.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,16 +54,18 @@
 		56348D0C1AA453F000D30E0D /* MyWeiboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyWeiboTests-Info.plist"; sourceTree = "<group>"; };
 		56348D0E1AA453F000D30E0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		56348D101AA453F000D30E0D /* MyWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWeiboTests.m; sourceTree = "<group>"; };
-		569D95F81AA45C8D00FD0054 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
-		569D95F91AA45C8D00FD0054 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
-		569D95FB1AA45CEF00FD0054 /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
-		569D95FC1AA45CEF00FD0054 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
-		569D95FE1AA45D0100FD0054 /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
-		569D95FF1AA45D0100FD0054 /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageController.m; sourceTree = "<group>"; };
-		569D96011AA45D1400FD0054 /* DiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverController.h; sourceTree = "<group>"; };
-		569D96021AA45D1400FD0054 /* DiscoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverController.m; sourceTree = "<group>"; };
-		569D96071AA45D6600FD0054 /* MeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
-		569D96081AA45D6600FD0054 /* MeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
+		56A758DD1AA5607500EB96AD /* DiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverController.h; sourceTree = "<group>"; };
+		56A758DE1AA5607500EB96AD /* DiscoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverController.m; sourceTree = "<group>"; };
+		56A758E31AA5607500EB96AD /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		56A758E41AA5607500EB96AD /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
+		56A758E91AA5607500EB96AD /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
+		56A758EA1AA5607500EB96AD /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
+		56A758EF1AA5607500EB96AD /* MeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
+		56A758F01AA5607500EB96AD /* MeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
+		56A758F51AA5607500EB96AD /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
+		56A758F61AA5607500EB96AD /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageController.m; sourceTree = "<group>"; };
+		56A759031AA571FF00EB96AD /* UIImage+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Custom.h"; sourceTree = "<group>"; };
+		56A759041AA571FF00EB96AD /* UIImage+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Custom.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,18 +125,9 @@
 		56348CF11AA453F000D30E0D /* MyWeibo */ = {
 			isa = PBXGroup;
 			children = (
+				56A758DA1AA5607500EB96AD /* Classes */,
 				56348CFA1AA453F000D30E0D /* AppDelegate.h */,
 				56348CFB1AA453F000D30E0D /* AppDelegate.m */,
-				569D95F81AA45C8D00FD0054 /* CustomTabBarController.h */,
-				569D95F91AA45C8D00FD0054 /* CustomTabBarController.m */,
-				569D95FB1AA45CEF00FD0054 /* HomeController.h */,
-				569D95FC1AA45CEF00FD0054 /* HomeController.m */,
-				569D95FE1AA45D0100FD0054 /* MessageController.h */,
-				569D95FF1AA45D0100FD0054 /* MessageController.m */,
-				569D96011AA45D1400FD0054 /* DiscoverController.h */,
-				569D96021AA45D1400FD0054 /* DiscoverController.m */,
-				569D96071AA45D6600FD0054 /* MeController.h */,
-				569D96081AA45D6600FD0054 /* MeController.m */,
 				56348CFD1AA453F000D30E0D /* Images.xcassets */,
 				56348CF21AA453F000D30E0D /* Supporting Files */,
 			);
@@ -167,6 +161,225 @@
 				56348D0D1AA453F000D30E0D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		56A758DA1AA5607500EB96AD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				56A758DB1AA5607500EB96AD /* Discover */,
+				56A758E11AA5607500EB96AD /* Home */,
+				56A758E71AA5607500EB96AD /* Main */,
+				56A758ED1AA5607500EB96AD /* Me */,
+				56A758F31AA5607500EB96AD /* Message */,
+				56A758F91AA5607500EB96AD /* Others */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		56A758DB1AA5607500EB96AD /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				56A758DC1AA5607500EB96AD /* Controller */,
+				56A758DF1AA5607500EB96AD /* Model */,
+				56A758E01AA5607500EB96AD /* View */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		56A758DC1AA5607500EB96AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56A758DD1AA5607500EB96AD /* DiscoverController.h */,
+				56A758DE1AA5607500EB96AD /* DiscoverController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56A758DF1AA5607500EB96AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56A758E01AA5607500EB96AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56A758E11AA5607500EB96AD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				56A758E21AA5607500EB96AD /* Controller */,
+				56A758E51AA5607500EB96AD /* Model */,
+				56A758E61AA5607500EB96AD /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		56A758E21AA5607500EB96AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56A758E31AA5607500EB96AD /* HomeController.h */,
+				56A758E41AA5607500EB96AD /* HomeController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56A758E51AA5607500EB96AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56A758E61AA5607500EB96AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56A758E71AA5607500EB96AD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				56A758E81AA5607500EB96AD /* Controller */,
+				56A758EB1AA5607500EB96AD /* Model */,
+				56A758EC1AA5607500EB96AD /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		56A758E81AA5607500EB96AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56A758E91AA5607500EB96AD /* CustomTabBarController.h */,
+				56A758EA1AA5607500EB96AD /* CustomTabBarController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56A758EB1AA5607500EB96AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56A758EC1AA5607500EB96AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56A758ED1AA5607500EB96AD /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				56A758EE1AA5607500EB96AD /* Controller */,
+				56A758F11AA5607500EB96AD /* Model */,
+				56A758F21AA5607500EB96AD /* View */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		56A758EE1AA5607500EB96AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56A758EF1AA5607500EB96AD /* MeController.h */,
+				56A758F01AA5607500EB96AD /* MeController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56A758F11AA5607500EB96AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56A758F21AA5607500EB96AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56A758F31AA5607500EB96AD /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				56A758F41AA5607500EB96AD /* Controller */,
+				56A758F71AA5607500EB96AD /* Model */,
+				56A758F81AA5607500EB96AD /* View */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		56A758F41AA5607500EB96AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56A758F51AA5607500EB96AD /* MessageController.h */,
+				56A758F61AA5607500EB96AD /* MessageController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56A758F71AA5607500EB96AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56A758F81AA5607500EB96AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56A758F91AA5607500EB96AD /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				56A758FA1AA5607500EB96AD /* Category */,
+				56A758FB1AA5607500EB96AD /* Controller */,
+				56A758FC1AA5607500EB96AD /* Model */,
+				56A758FD1AA5607500EB96AD /* View */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		56A758FA1AA5607500EB96AD /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				56A759031AA571FF00EB96AD /* UIImage+Custom.h */,
+				56A759041AA571FF00EB96AD /* UIImage+Custom.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		56A758FB1AA5607500EB96AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56A758FC1AA5607500EB96AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56A758FD1AA5607500EB96AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,13 +477,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				569D96031AA45D1400FD0054 /* DiscoverController.m in Sources */,
-				569D95FD1AA45CEF00FD0054 /* HomeController.m in Sources */,
+				56A758FF1AA5607500EB96AD /* HomeController.m in Sources */,
+				56A759011AA5607500EB96AD /* MeController.m in Sources */,
+				56A759051AA571FF00EB96AD /* UIImage+Custom.m in Sources */,
+				56A758FE1AA5607500EB96AD /* DiscoverController.m in Sources */,
 				56348CFC1AA453F000D30E0D /* AppDelegate.m in Sources */,
-				569D96091AA45D6600FD0054 /* MeController.m in Sources */,
-				569D96001AA45D0100FD0054 /* MessageController.m in Sources */,
+				56A759001AA5607500EB96AD /* CustomTabBarController.m in Sources */,
 				56348CF81AA453F000D30E0D /* main.m in Sources */,
-				569D95FA1AA45C8D00FD0054 /* CustomTabBarController.m in Sources */,
+				56A759021AA5607500EB96AD /* MessageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
