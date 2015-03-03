@@ -12,9 +12,10 @@
 #import "DiscoverController.h"
 #import "MeController.h"
 #import "UIImage+Custom.h"
+#import "CustomTabBar.h"
 
 @interface CustomTabBarController ()
-
+@property(nonatomic ,weak) CustomTabBar *customTabbar;
 @end
 
 @implementation CustomTabBarController
@@ -23,6 +24,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //初始化自定义TabBar
+    [self setupCustomTabBar];
+    
     HomeController *home=[[HomeController alloc] init];
     [self setupChildrenViewController:home title:@"首页" imageName:@"tabbar_home.png" selectedImageName:@"tabbar_home_selected.png"];
     MessageController *message=[[MessageController alloc] init];
@@ -31,6 +36,19 @@
     [self setupChildrenViewController:discover title:@"发现" imageName:@"tabbar_discover" selectedImageName:@"tabbar_discover_selected.png"];
     MeController *me=[[MeController alloc] init];
     [self setupChildrenViewController:me title:@"我" imageName:@"tabbar_profile.png" selectedImageName:@"tabbar_profile_selected.png"];
+}
+
+/**
+ *  当view即将出现时，tabBar才被初始化，所以要在此方法中移除原有tabBar中的view
+ */
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //移除原有tabBar中的view
+    for (UIView *view in self.tabBar.subviews) {
+        if ([view isKindOfClass:[UIControl class]]) {
+            [view removeFromSuperview];
+        }
+    }
 }
 
 /**
@@ -60,7 +78,21 @@
     
     UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:controller];
     [self addChildViewController:nav];
+    
+    [self.customTabbar addBarButtionWithItem:controller.tabBarItem];
 
+}
+
+/**
+ *  初始化自定义tabBar
+ */
+-(void) setupCustomTabBar{
+    CustomTabBar *customTabbar=[[CustomTabBar alloc] init];
+    //设置自定义Tabbar的frame大小和自带的大小相同
+    customTabbar.frame=self.tabBar.bounds;
+    customTabbar.backgroundColor=[UIColor orangeColor];
+    [self.tabBar addSubview:customTabbar];
+    self.customTabbar=customTabbar;
 }
 
 - (void)didReceiveMemoryWarning

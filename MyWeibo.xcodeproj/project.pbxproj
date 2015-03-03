@@ -25,6 +25,7 @@
 		56A759011AA5607500EB96AD /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758F01AA5607500EB96AD /* MeController.m */; };
 		56A759021AA5607500EB96AD /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758F61AA5607500EB96AD /* MessageController.m */; };
 		56A759051AA571FF00EB96AD /* UIImage+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759041AA571FF00EB96AD /* UIImage+Custom.m */; };
+		56A7590D1AA5829300EB96AD /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A7590C1AA5829300EB96AD /* CustomTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		56A758F61AA5607500EB96AD /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageController.m; sourceTree = "<group>"; };
 		56A759031AA571FF00EB96AD /* UIImage+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Custom.h"; sourceTree = "<group>"; };
 		56A759041AA571FF00EB96AD /* UIImage+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Custom.m"; sourceTree = "<group>"; };
+		56A7590B1AA5829300EB96AD /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBar.h; sourceTree = "<group>"; };
+		56A7590C1AA5829300EB96AD /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +250,7 @@
 			children = (
 				56A758E81AA5607500EB96AD /* Controller */,
 				56A758EB1AA5607500EB96AD /* Model */,
-				56A758EC1AA5607500EB96AD /* View */,
+				56A7590A1AA5827900EB96AD /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -266,13 +269,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		56A758EC1AA5607500EB96AD /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		56A758ED1AA5607500EB96AD /* Me */ = {
@@ -382,6 +378,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		56A7590A1AA5827900EB96AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56A7590B1AA5829300EB96AD /* CustomTabBar.h */,
+				56A7590C1AA5829300EB96AD /* CustomTabBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -482,6 +487,7 @@
 				56A759051AA571FF00EB96AD /* UIImage+Custom.m in Sources */,
 				56A758FE1AA5607500EB96AD /* DiscoverController.m in Sources */,
 				56348CFC1AA453F000D30E0D /* AppDelegate.m in Sources */,
+				56A7590D1AA5829300EB96AD /* CustomTabBar.m in Sources */,
 				56A759001AA5607500EB96AD /* CustomTabBarController.m in Sources */,
 				56348CF81AA453F000D30E0D /* main.m in Sources */,
 				56A759021AA5607500EB96AD /* MessageController.m in Sources */,
