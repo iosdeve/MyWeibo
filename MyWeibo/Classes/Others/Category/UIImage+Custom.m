@@ -38,4 +38,17 @@
     return [UIImage imageNamed:name];
 }
 
+/**
+ *  拉伸Image
+ *
+ *  @param name image图标名称
+ *
+ *  @return 返回UIImage
+ */
++(UIImage *) imageResize:(NSString *) name{
+    UIImage *image=[UIImage imageWithName:name];
+    image=[image stretchableImageWithLeftCapWidth:image.size.width*0.5 topCapHeight:image.size.height*0.5];
+    return image;
+}
+
 @end

@@ -28,8 +28,10 @@
     [self setupCustomTabBar];
     
     HomeController *home=[[HomeController alloc] init];
+    home.tabBarItem.badgeValue=@"1399";
     [self setupChildrenViewController:home title:@"首页" imageName:@"tabbar_home.png" selectedImageName:@"tabbar_home_selected.png"];
     MessageController *message=[[MessageController alloc] init];
+    message.tabBarItem.badgeValue=@"5";
     [self setupChildrenViewController:message title:@"消息" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected.png"];
     DiscoverController *discover=[[DiscoverController alloc] init];
     [self setupChildrenViewController:discover title:@"发现" imageName:@"tabbar_discover" selectedImageName:@"tabbar_discover_selected.png"];

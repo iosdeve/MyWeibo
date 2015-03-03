@@ -19,6 +19,7 @@
 		56348D071AA453F000D30E0D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56348CEF1AA453F000D30E0D /* UIKit.framework */; };
 		56348D0F1AA453F000D30E0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 56348D0D1AA453F000D30E0D /* InfoPlist.strings */; };
 		56348D111AA453F000D30E0D /* MyWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56348D101AA453F000D30E0D /* MyWeiboTests.m */; };
+		566331C61AA5EA9800D43BF9 /* BadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 566331C51AA5EA9800D43BF9 /* BadgeButton.m */; };
 		56A758FE1AA5607500EB96AD /* DiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758DE1AA5607500EB96AD /* DiscoverController.m */; };
 		56A758FF1AA5607500EB96AD /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758E41AA5607500EB96AD /* HomeController.m */; };
 		56A759001AA5607500EB96AD /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A758EA1AA5607500EB96AD /* CustomTabBarController.m */; };
@@ -56,6 +57,8 @@
 		56348D0C1AA453F000D30E0D /* MyWeiboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyWeiboTests-Info.plist"; sourceTree = "<group>"; };
 		56348D0E1AA453F000D30E0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		56348D101AA453F000D30E0D /* MyWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWeiboTests.m; sourceTree = "<group>"; };
+		566331C41AA5EA9800D43BF9 /* BadgeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeButton.h; sourceTree = "<group>"; };
+		566331C51AA5EA9800D43BF9 /* BadgeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeButton.m; sourceTree = "<group>"; };
 		56A758DD1AA5607500EB96AD /* DiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverController.h; sourceTree = "<group>"; };
 		56A758DE1AA5607500EB96AD /* DiscoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverController.m; sourceTree = "<group>"; };
 		56A758E31AA5607500EB96AD /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 				56A7590C1AA5829300EB96AD /* CustomTabBar.m */,
 				56A7590E1AA5955A00EB96AD /* TabBarButton.h */,
 				56A7590F1AA5955A00EB96AD /* TabBarButton.m */,
+				566331C41AA5EA9800D43BF9 /* BadgeButton.h */,
+				566331C51AA5EA9800D43BF9 /* BadgeButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56A758FF1AA5607500EB96AD /* HomeController.m in Sources */,
+				566331C61AA5EA9800D43BF9 /* BadgeButton.m in Sources */,
 				56A759011AA5607500EB96AD /* MeController.m in Sources */,
 				56A759051AA571FF00EB96AD /* UIImage+Custom.m in Sources */,
 				56A758FE1AA5607500EB96AD /* DiscoverController.m in Sources */,

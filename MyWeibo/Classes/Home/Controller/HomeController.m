@@ -32,6 +32,15 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIButton *btn=[UIButton buttonWithType:UIButtonTypeContactAdd];
+    btn.center=CGPointMake(50, 50);
+    [btn addTarget:self action:@selector(testDynamicBadgeValue:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+}
+
+-(void) testDynamicBadgeValue:(UIButton *) but {
+    self.tabBarItem.badgeValue=@"3";
+    self.tabBarItem.title=@"测试";
 }
 
 - (void)didReceiveMemoryWarning

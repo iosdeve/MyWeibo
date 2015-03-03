@@ -19,4 +19,12 @@
  */
 +(UIImage *) imageWithName:(NSString *) name;
 
+/**
+ *  拉伸Image
+ *  @param name image图标名称
+ *
+ *  @return 返回UIImage
+ */
++(UIImage *) imageResize:(NSString *) name;
+
 @end
