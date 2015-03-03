@@ -19,6 +19,11 @@
 		56348D071AA453F000D30E0D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56348CEF1AA453F000D30E0D /* UIKit.framework */; };
 		56348D0F1AA453F000D30E0D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 56348D0D1AA453F000D30E0D /* InfoPlist.strings */; };
 		56348D111AA453F000D30E0D /* MyWeiboTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56348D101AA453F000D30E0D /* MyWeiboTests.m */; };
+		569D95FA1AA45C8D00FD0054 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D95F91AA45C8D00FD0054 /* CustomTabBarController.m */; };
+		569D95FD1AA45CEF00FD0054 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D95FC1AA45CEF00FD0054 /* HomeController.m */; };
+		569D96001AA45D0100FD0054 /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D95FF1AA45D0100FD0054 /* MessageController.m */; };
+		569D96031AA45D1400FD0054 /* DiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D96021AA45D1400FD0054 /* DiscoverController.m */; };
+		569D96091AA45D6600FD0054 /* MeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D96081AA45D6600FD0054 /* MeController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,16 @@
 		56348D0C1AA453F000D30E0D /* MyWeiboTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyWeiboTests-Info.plist"; sourceTree = "<group>"; };
 		56348D0E1AA453F000D30E0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		56348D101AA453F000D30E0D /* MyWeiboTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWeiboTests.m; sourceTree = "<group>"; };
+		569D95F81AA45C8D00FD0054 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
+		569D95F91AA45C8D00FD0054 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
+		569D95FB1AA45CEF00FD0054 /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		569D95FC1AA45CEF00FD0054 /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
+		569D95FE1AA45D0100FD0054 /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
+		569D95FF1AA45D0100FD0054 /* MessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageController.m; sourceTree = "<group>"; };
+		569D96011AA45D1400FD0054 /* DiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverController.h; sourceTree = "<group>"; };
+		569D96021AA45D1400FD0054 /* DiscoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverController.m; sourceTree = "<group>"; };
+		569D96071AA45D6600FD0054 /* MeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeController.h; sourceTree = "<group>"; };
+		569D96081AA45D6600FD0054 /* MeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +124,16 @@
 			children = (
 				56348CFA1AA453F000D30E0D /* AppDelegate.h */,
 				56348CFB1AA453F000D30E0D /* AppDelegate.m */,
+				569D95F81AA45C8D00FD0054 /* CustomTabBarController.h */,
+				569D95F91AA45C8D00FD0054 /* CustomTabBarController.m */,
+				569D95FB1AA45CEF00FD0054 /* HomeController.h */,
+				569D95FC1AA45CEF00FD0054 /* HomeController.m */,
+				569D95FE1AA45D0100FD0054 /* MessageController.h */,
+				569D95FF1AA45D0100FD0054 /* MessageController.m */,
+				569D96011AA45D1400FD0054 /* DiscoverController.h */,
+				569D96021AA45D1400FD0054 /* DiscoverController.m */,
+				569D96071AA45D6600FD0054 /* MeController.h */,
+				569D96081AA45D6600FD0054 /* MeController.m */,
 				56348CFD1AA453F000D30E0D /* Images.xcassets */,
 				56348CF21AA453F000D30E0D /* Supporting Files */,
 			);
@@ -239,8 +264,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				569D96031AA45D1400FD0054 /* DiscoverController.m in Sources */,
+				569D95FD1AA45CEF00FD0054 /* HomeController.m in Sources */,
 				56348CFC1AA453F000D30E0D /* AppDelegate.m in Sources */,
+				569D96091AA45D6600FD0054 /* MeController.m in Sources */,
+				569D96001AA45D0100FD0054 /* MessageController.m in Sources */,
 				56348CF81AA453F000D30E0D /* main.m in Sources */,
+				569D95FA1AA45C8D00FD0054 /* CustomTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +390,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyWeibo/MyWeibo-Prefix.pch";
 				INFOPLIST_FILE = "MyWeibo/MyWeibo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -373,6 +404,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyWeibo/MyWeibo-Prefix.pch";
 				INFOPLIST_FILE = "MyWeibo/MyWeibo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -437,6 +469,7 @@
 				56348D161AA453F000D30E0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56348D171AA453F000D30E0D /* Build configuration list for PBXNativeTarget "MyWeiboTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +478,7 @@
 				56348D191AA453F000D30E0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
