@@ -7,6 +7,13 @@
 //自定义TabBar
 
 #import "CustomTabBar.h"
+#import "TabBarButton.h"
+
+@interface CustomTabBar ()
+
+@property(nonatomic, weak) TabBarButton *selectedButton;
+
+@end
 
 @implementation CustomTabBar
 
@@ -14,7 +21,10 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        // 如果不是ios7设置TabBar的背景图片，黑色
+        if (!iOS7) {
+            self.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageWithName:@"tabbar_background"]];
+        }
     }
     return self;
 }
@@ -25,11 +35,16 @@
  *  @param item 参照的UITabBarItem
  */
 -(void)addBarButtionWithItem:(UITabBarItem *)item{
-    UIButton *button=[[UIButton alloc] init];
-    [button setTitle:item.title forState:UIControlStateNormal];
-    [button setImage:item.image forState:UIControlStateNormal];
-    [button setImage:item.selectedImage forState:UIControlStateSelected];
+    TabBarButton *button=[[TabBarButton alloc] init];
+    button.item=item;
     [self addSubview:button];
+    
+    //为按钮添加点击事件
+    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
+    
+    if (self.subviews.count==1) {
+        [self buttonClick:button];
+    }
 }
 
 /**
@@ -45,7 +60,23 @@
         CGFloat x=i*w;
         UIButton *button=self.subviews[i];
         button.frame=CGRectMake(x, y, w, h);
+        //设置按钮的索引tag，用于后续点击时显示对应的controller
+        button.tag=i;
     }
+}
+
+/**
+ *  处理点击按钮事件，改变按钮的状态
+ */
+-(void) buttonClick:(TabBarButton *) button{
+    //执行代理方法
+    if ([self.delegate respondsToSelector:@selector(tabBar:didSelectFromIndex:toIndex:)]) {
+        [self.delegate tabBar:self didSelectFromIndex:self.selectedButton.tag toIndex:button.tag];
+    }
+    
+    self.selectedButton.selected=NO;
+    button.selected=YES;
+    self.selectedButton=button;
 }
 
 @end

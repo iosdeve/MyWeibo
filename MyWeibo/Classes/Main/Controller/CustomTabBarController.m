@@ -11,10 +11,9 @@
 #import "MessageController.h"
 #import "DiscoverController.h"
 #import "MeController.h"
-#import "UIImage+Custom.h"
 #import "CustomTabBar.h"
 
-@interface CustomTabBarController ()
+@interface CustomTabBarController () <CustomTabBarDelegate>
 @property(nonatomic ,weak) CustomTabBar *customTabbar;
 @end
 
@@ -90,9 +89,18 @@
     CustomTabBar *customTabbar=[[CustomTabBar alloc] init];
     //设置自定义Tabbar的frame大小和自带的大小相同
     customTabbar.frame=self.tabBar.bounds;
-    customTabbar.backgroundColor=[UIColor orangeColor];
+    //为自定义tabbar设置代理
+    customTabbar.delegate=self;
     [self.tabBar addSubview:customTabbar];
     self.customTabbar=customTabbar;
+}
+
+/**
+ *  点击tabbar按钮时的代理方法
+ */
+-(void)tabBar:(CustomTabBar *)tabBar didSelectFromIndex:(int)from toIndex:(int)to{
+    //切换TabBarController的子控制器
+    self.selectedIndex=to;
 }
 
 - (void)didReceiveMemoryWarning
