@@ -8,6 +8,7 @@
 
 #import "HomeController.h"
 #import "UIBarButtonItem+Custom.h"
+#import "ButtonWithRightIcon.h"
 
 @interface HomeController ()
 
@@ -27,15 +28,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //
+    //左边朋友
     self.navigationItem.leftBarButtonItem=[UIBarButtonItem barButtonItemWithIcon:@"navigationbar_friendsearch" hilightIcon:@"navigationbar_friendsearch_highlighted" target:self action:@selector(friendSearch)];
-    
-    //
+    //右边的扫一扫
     self.navigationItem.rightBarButtonItem=[UIBarButtonItem barButtonItemWithIcon:@"navigationbar_pop" hilightIcon:@"navigationbar_pop_highlighted" target:self action:@selector(friendSearch)];
+    //中间按钮
+    ButtonWithRightIcon *middleBtn=[[ButtonWithRightIcon alloc] init];
+    [middleBtn setTitle:@"测试" forState:UIControlStateNormal];
+    [middleBtn setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+    middleBtn.frame=CGRectMake(0, 0, 80, 38);
+    [middleBtn addTarget:self action:@selector(clickMiddleBtn:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.titleView=middleBtn;
 }
 
 -(void) friendSearch{
     NSLog(@"friendSearch");
+}
+
+-(void) clickMiddleBtn:(ButtonWithRightIcon *) btn{
+    if (btn.imageView.image==[UIImage imageWithName:@"navigationbar_arrow_down"]) {
+        [btn setImage:[UIImage imageWithName:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
+    }else{
+        [btn setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning

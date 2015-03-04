@@ -31,6 +31,7 @@
 		56A759131AA6D22F00EB96AD /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759121AA6D22F00EB96AD /* CustomNavigationController.m */; };
 		56A759191AA7038100EB96AD /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759181AA7038100EB96AD /* UIBarButtonItem+Custom.m */; };
 		56A7591C1AA709E500EB96AD /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A7591B1AA709E500EB96AD /* SearhField.m */; };
+		56C2CB461AA74AEE0009480B /* ButtonWithRightIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		56A759181AA7038100EB96AD /* UIBarButtonItem+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Custom.m"; sourceTree = "<group>"; };
 		56A7591A1AA709E500EB96AD /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearhField.h; path = ../../Others/View/SearhField.h; sourceTree = "<group>"; };
 		56A7591B1AA709E500EB96AD /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearhField.m; path = ../../Others/View/SearhField.m; sourceTree = "<group>"; };
+		56C2CB441AA74AEE0009480B /* ButtonWithRightIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonWithRightIcon.h; sourceTree = "<group>"; };
+		56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonWithRightIcon.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +261,8 @@
 		56A758E61AA5607500EB96AD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				56C2CB441AA74AEE0009480B /* ButtonWithRightIcon.h */,
+				56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C2CB461AA74AEE0009480B /* ButtonWithRightIcon.m in Sources */,
 				56A758FF1AA5607500EB96AD /* HomeController.m in Sources */,
 				566331C61AA5EA9800D43BF9 /* BadgeButton.m in Sources */,
 				56A759011AA5607500EB96AD /* MeController.m in Sources */,
