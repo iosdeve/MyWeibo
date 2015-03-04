@@ -12,6 +12,7 @@
 #import "DiscoverController.h"
 #import "MeController.h"
 #import "CustomTabBar.h"
+#import "CustomNavigationController.h"
 
 @interface CustomTabBarController () <CustomTabBarDelegate>
 @property(nonatomic ,weak) CustomTabBar *customTabbar;
@@ -76,8 +77,7 @@
         //iOS6不支持imageWithRenderingMode方法
         controller.tabBarItem.selectedImage=selectImage;
     }
-    
-    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:controller];
+    CustomNavigationController *nav=[[CustomNavigationController alloc] initWithRootViewController:controller];
     [self addChildViewController:nav];
     
     [self.customTabbar addBarButtionWithItem:controller.tabBarItem];

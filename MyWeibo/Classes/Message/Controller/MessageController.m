@@ -27,11 +27,9 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //设置左右的导航栏Item
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"发私信" style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.rightBarButtonItem.enabled=NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,32 +38,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 3;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    static NSString *identifer=@"MyCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    if (cell==nil) {
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+    }
+    cell.textLabel.text=@"send message";
     return cell;
 }
-*/
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UIViewController *control=[[UIViewController alloc] init];
+    control.view.backgroundColor=[UIColor purpleColor];
+    [self.navigationController pushViewController:control animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.
