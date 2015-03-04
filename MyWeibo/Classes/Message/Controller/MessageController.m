@@ -29,7 +29,6 @@
     
     //设置左右的导航栏Item
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"发私信" style:UIBarButtonItemStylePlain target:self action:nil];
-    self.navigationItem.rightBarButtonItem.enabled=NO;
 }
 
 - (void)didReceiveMemoryWarning

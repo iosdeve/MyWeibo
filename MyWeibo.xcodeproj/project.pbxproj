@@ -29,6 +29,8 @@
 		56A7590D1AA5829300EB96AD /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A7590C1AA5829300EB96AD /* CustomTabBar.m */; };
 		56A759101AA5955A00EB96AD /* TabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A7590F1AA5955A00EB96AD /* TabBarButton.m */; };
 		56A759131AA6D22F00EB96AD /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759121AA6D22F00EB96AD /* CustomNavigationController.m */; };
+		56A759191AA7038100EB96AD /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759181AA7038100EB96AD /* UIBarButtonItem+Custom.m */; };
+		56A7591C1AA709E500EB96AD /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A7591B1AA709E500EB96AD /* SearhField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,10 @@
 		56A7590F1AA5955A00EB96AD /* TabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarButton.m; sourceTree = "<group>"; };
 		56A759111AA6D22F00EB96AD /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
 		56A759121AA6D22F00EB96AD /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
+		56A759171AA7038100EB96AD /* UIBarButtonItem+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Custom.h"; sourceTree = "<group>"; };
+		56A759181AA7038100EB96AD /* UIBarButtonItem+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Custom.m"; sourceTree = "<group>"; };
+		56A7591A1AA709E500EB96AD /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearhField.h; sourceTree = "<group>"; };
+		56A7591B1AA709E500EB96AD /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearhField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +368,8 @@
 			children = (
 				56A759031AA571FF00EB96AD /* UIImage+Custom.h */,
 				56A759041AA571FF00EB96AD /* UIImage+Custom.m */,
+				56A759171AA7038100EB96AD /* UIBarButtonItem+Custom.h */,
+				56A759181AA7038100EB96AD /* UIBarButtonItem+Custom.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -385,6 +393,8 @@
 		56A758FD1AA5607500EB96AD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				56A7591A1AA709E500EB96AD /* SearhField.h */,
+				56A7591B1AA709E500EB96AD /* SearhField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -505,9 +515,11 @@
 				56348CFC1AA453F000D30E0D /* AppDelegate.m in Sources */,
 				56A7590D1AA5829300EB96AD /* CustomTabBar.m in Sources */,
 				56A759001AA5607500EB96AD /* CustomTabBarController.m in Sources */,
+				56A759191AA7038100EB96AD /* UIBarButtonItem+Custom.m in Sources */,
 				56A759101AA5955A00EB96AD /* TabBarButton.m in Sources */,
 				56348CF81AA453F000D30E0D /* main.m in Sources */,
 				56A759131AA6D22F00EB96AD /* CustomNavigationController.m in Sources */,
+				56A7591C1AA709E500EB96AD /* SearhField.m in Sources */,
 				56A759021AA5607500EB96AD /* MessageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 #import "HomeController.h"
+#import "UIBarButtonItem+Custom.h"
 
 @interface HomeController ()
 
@@ -26,15 +27,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIButton *btn=[UIButton buttonWithType:UIButtonTypeContactAdd];
-    btn.center=CGPointMake(50, 50);
-    [btn addTarget:self action:@selector(testDynamicBadgeValue:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    //
+    self.navigationItem.leftBarButtonItem=[UIBarButtonItem barButtonItemWithIcon:@"navigationbar_friendsearch" hilightIcon:@"navigationbar_friendsearch_highlighted" target:self action:@selector(friendSearch)];
+    
+    //
+    self.navigationItem.rightBarButtonItem=[UIBarButtonItem barButtonItemWithIcon:@"navigationbar_pop" hilightIcon:@"navigationbar_pop_highlighted" target:self action:@selector(friendSearch)];
 }
 
--(void) testDynamicBadgeValue:(UIButton *) but {
-    self.tabBarItem.badgeValue=@"3";
-    self.tabBarItem.title=@"测试";
+-(void) friendSearch{
+    NSLog(@"friendSearch");
 }
 
 - (void)didReceiveMemoryWarning
