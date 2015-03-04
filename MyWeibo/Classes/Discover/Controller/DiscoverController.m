@@ -27,8 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //添加搜索框到导航栏中
     SearhField *searchF=[SearhField searchField];
     searchF.frame=CGRectMake(0, 0, 300, 30);
+    self.navigationItem.titleView=searchF;
 }
 
 - (void)didReceiveMemoryWarning

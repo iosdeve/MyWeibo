@@ -19,18 +19,24 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        //设置背景图片
+        self.background=[UIImage imageResize:@"searchbar_textfield_background"];
         self.clearButtonMode=UITextFieldViewModeAlways;
         self.font=[UIFont systemFontOfSize:13];
         // 设置搜索框左边放大镜图标
-        UIImageView *leftImageView=[[UIImageView alloc] initWithImage:[UIImage imageWithName:@""]];
-        leftImageView.frame=CGRectMake(0, 0, 30, 30);
+        UIImageView *leftImageView=[[UIImageView alloc] initWithImage:[UIImage imageWithName:@"searchbar_textfield_search_icon"]];
         self.leftView=leftImageView;
-        self.leftView.contentMode=UIViewContentModeCenter;
+        leftImageView.contentMode=UIViewContentModeCenter;
+        //设置显示左边图标，如果不设置将不会显示
+        self.leftViewMode=UITextFieldViewModeAlways;
         //设置提示占位文字的颜色
         NSMutableDictionary *attribute=[NSMutableDictionary dictionary];
         attribute[NSForegroundColorAttributeName]=[UIColor grayColor];
-        self.attributedPlaceholder=[[NSAttributedString alloc] initWithString:@"搜索" attributes:nil];
+        self.attributedPlaceholder=[[NSAttributedString alloc] initWithString:@"搜索" attributes:attribute];
+        //设置回车键显示的文字
+        self.returnKeyType=UIReturnKeySearch;
+         //设置回车键自动可用或不可用
+        self.enablesReturnKeyAutomatically=YES;
     }
     return self;
 }

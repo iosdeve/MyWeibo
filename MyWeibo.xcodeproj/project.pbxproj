@@ -82,8 +82,8 @@
 		56A759121AA6D22F00EB96AD /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		56A759171AA7038100EB96AD /* UIBarButtonItem+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Custom.h"; sourceTree = "<group>"; };
 		56A759181AA7038100EB96AD /* UIBarButtonItem+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Custom.m"; sourceTree = "<group>"; };
-		56A7591A1AA709E500EB96AD /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearhField.h; sourceTree = "<group>"; };
-		56A7591B1AA709E500EB96AD /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearhField.m; sourceTree = "<group>"; };
+		56A7591A1AA709E500EB96AD /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearhField.h; path = ../../Others/View/SearhField.h; sourceTree = "<group>"; };
+		56A7591B1AA709E500EB96AD /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearhField.m; path = ../../Others/View/SearhField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +223,8 @@
 		56A758E01AA5607500EB96AD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				56A7591A1AA709E500EB96AD /* SearhField.h */,
+				56A7591B1AA709E500EB96AD /* SearhField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,8 +395,6 @@
 		56A758FD1AA5607500EB96AD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				56A7591A1AA709E500EB96AD /* SearhField.h */,
-				56A7591B1AA709E500EB96AD /* SearhField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
