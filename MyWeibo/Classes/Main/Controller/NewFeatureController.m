@@ -30,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [UIApplication sharedApplication].statusBarHidden=YES;
     //设置scrollView
     [self setupScrollView];
     //设置分页指示器
@@ -133,6 +132,7 @@
  *  开始微博按钮点击事件处理
  */
 -(void) startWeibo:(UIButton *) button{
+    [UIApplication sharedApplication].statusBarHidden=NO;
     [UIApplication sharedApplication].keyWindow.rootViewController=[[CustomTabBarController alloc] init];
 }
 

@@ -16,11 +16,21 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    //显示状态栏
-    application.statusBarHidden=NO;
-    //self.window.rootViewController=[[CustomTabBarController alloc] init];
-    NewFeatureController *newFeature=[[NewFeatureController alloc] init];
-    self.window.rootViewController=newFeature;
+    NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
+    NSString *appVersion=[userDefault objectForKey:@"CFBundleVersion"];
+    NSString *currentVersion=[NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
+    //判断沙盒里的版本和当前app版本是否一致，如果相同直接进入主界面，如果不同显示新特性界面
+    if ([appVersion isEqualToString:currentVersion]) {
+        //显示状态栏,项目默认设置不显示，便于lanchimage全屏显示
+         application.statusBarHidden=NO;
+        self.window.rootViewController=[[CustomTabBarController alloc] init];
+    }else{
+        //保持当前app版本到沙盒，并且调用synchronize立即保存
+        [userDefault setObject:currentVersion forKey:@"CFBundleVersion"];
+        [userDefault synchronize];
+        NewFeatureController *newFeature=[[NewFeatureController alloc] init];
+        self.window.rootViewController=newFeature;
+    }
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
