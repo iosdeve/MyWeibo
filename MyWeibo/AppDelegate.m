@@ -9,13 +9,15 @@
 #import "AppDelegate.h"
 #import "CustomTabBarController.h"
 #import "NewFeatureController.h"
+#import "LoginController.h"
+#import "Account.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    /*
     NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
     NSString *appVersion=[userDefault objectForKey:@"CFBundleVersion"];
     NSString *currentVersion=[NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
@@ -31,6 +33,11 @@
         NewFeatureController *newFeature=[[NewFeatureController alloc] init];
         self.window.rootViewController=newFeature;
     }
+     */
+    Account *account=[NSKeyedUnarchiver unarchiveObjectWithFile:[DocumentPath stringByAppendingPathComponent:@"account.data"]];
+    NSLog(@"%@",account.access_token);
+    LoginController *login=[[LoginController alloc] init];
+    self.window.rootViewController=login;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
