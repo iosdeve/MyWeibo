@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CustomTabBarController.h"
+#import "NewFeatureController.h"
 
 @implementation AppDelegate
 
@@ -17,7 +18,9 @@
     // Override point for customization after application launch.
     //显示状态栏
     application.statusBarHidden=NO;
-    self.window.rootViewController=[[CustomTabBarController alloc] init];
+    //self.window.rootViewController=[[CustomTabBarController alloc] init];
+    NewFeatureController *newFeature=[[NewFeatureController alloc] init];
+    self.window.rootViewController=newFeature;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
