@@ -9,6 +9,9 @@
 #import "LoginController.h"
 #import "AFNetworking.h"
 #import "Account.h"
+#import "OAuthInfo.h"
+#import "Util.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface LoginController () <UIWebViewDelegate>
 @property(nonatomic, strong) AFHTTPRequestOperationManager *requestManager;
@@ -43,12 +46,26 @@
     webView.delegate=self;
     [self.view addSubview:webView];
 }
+
+/**
+ *  开始请求URL调用
+ */
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [MBProgressHUD showMessage:@"加载中..."];
+}
+/**
+ *  结束请求URL调用
+ */
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    [MBProgressHUD hideHUD];
+}
+
 /**
  *  是否向服务器发送请求
  *
  *  @param webView
  *  @param request        request的url
- *  @param navigationType <#navigationType description#>
+ *  @param navigationType
  *
  *  @return 如果返回NO，则不发送请求
  */
@@ -73,11 +90,18 @@
         //发送Post请求
         [self.requestManager POST:AccessTokenURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             Account *account=[Account accountFromeDict:responseObject];
-            NSString *archivePath=[DocumentPath stringByAppendingPathComponent:@"account.data"];
-            [NSKeyedArchiver archiveRootObject:account toFile:archivePath];
+            //归档
+            [Util saveAccount:account];
+            //显示window的根控制器，是显示新特性，还是进入主界面
+            [Util chooseRootViewController];
+            //隐藏加载提示
+            [MBProgressHUD hideHUD];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"--%@",error);
+             //隐藏加载提示
+            [MBProgressHUD hideHUD];
         }];
+        return NO;
     }
     return YES;
 }

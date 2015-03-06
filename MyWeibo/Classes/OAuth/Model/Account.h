@@ -16,6 +16,8 @@
 @property(nonatomic, assign) long long remind_in;
 // 用户Id
 @property(nonatomic, assign) long long uid;
+//保存时间
+@property(nonatomic, strong) NSDate *saveTime;
 
 /**
  *  从字典转换为对象KVC
