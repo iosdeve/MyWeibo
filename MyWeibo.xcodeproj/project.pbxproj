@@ -38,6 +38,8 @@
 		56333C3D1AA9A0A6002B62AA /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333C1F1AA9A0A6002B62AA /* UIImage+MultiFormat.m */; };
 		56333C3E1AA9A0A6002B62AA /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333C211AA9A0A6002B62AA /* UIImage+WebP.m */; };
 		56333C3F1AA9A0A6002B62AA /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333C231AA9A0A6002B62AA /* UIImageView+WebCache.m */; };
+		56333C421AA9A172002B62AA /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333C411AA9A172002B62AA /* Status.m */; };
+		56333C451AA9A182002B62AA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333C441AA9A182002B62AA /* User.m */; };
 		56348CEC1AA453F000D30E0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56348CEB1AA453F000D30E0D /* Foundation.framework */; };
 		56348CEE1AA453F000D30E0D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56348CED1AA453F000D30E0D /* CoreGraphics.framework */; };
 		56348CF01AA453F000D30E0D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56348CEF1AA453F000D30E0D /* UIKit.framework */; };
@@ -152,6 +154,10 @@
 		56333C211AA9A0A6002B62AA /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
 		56333C221AA9A0A6002B62AA /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		56333C231AA9A0A6002B62AA /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		56333C401AA9A172002B62AA /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		56333C411AA9A172002B62AA /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
+		56333C431AA9A182002B62AA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		56333C441AA9A182002B62AA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		56348CE81AA453F000D30E0D /* MyWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56348CEB1AA453F000D30E0D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		56348CED1AA453F000D30E0D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -481,6 +487,10 @@
 		56A758E51AA5607500EB96AD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				56333C401AA9A172002B62AA /* Status.h */,
+				56333C411AA9A172002B62AA /* Status.m */,
+				56333C431AA9A182002B62AA /* User.h */,
+				56333C441AA9A182002B62AA /* User.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -835,8 +845,10 @@
 				56A759011AA5607500EB96AD /* MeController.m in Sources */,
 				56C9BB661AA88DAF003DDE13 /* LoginController.m in Sources */,
 				56333BE61AA978D1002B62AA /* MBProgressHUD.m in Sources */,
+				56333C451AA9A182002B62AA /* User.m in Sources */,
 				56A759051AA571FF00EB96AD /* UIImage+Custom.m in Sources */,
 				56C9BB9D1AA8A04C003DDE13 /* AFHTTPSessionManager.m in Sources */,
+				56333C421AA9A172002B62AA /* Status.m in Sources */,
 				56333C281AA9A0A6002B62AA /* MJType.m in Sources */,
 				56A758FE1AA5607500EB96AD /* DiscoverController.m in Sources */,
 				56C9BBA71AA8A2F3003DDE13 /* Account.m in Sources */,
