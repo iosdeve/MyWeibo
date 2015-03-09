@@ -9,8 +9,18 @@
 #import "HomeController.h"
 #import "UIBarButtonItem+Custom.h"
 #import "ButtonWithRightIcon.h"
+#import "AFNetworking.h"
+#import "OAuthInfo.h"
+#import "Util.h"
+#import "Account.h"
+#import "MJExtension.h"
+#import "Status.h"
+#import "User.h"
+#import "UIImageView+WebCache.h"
 
 @interface HomeController ()
+//微博数据模型
+@property(nonatomic, strong) NSArray *status;
 
 @end
 
@@ -39,6 +49,24 @@
     middleBtn.frame=CGRectMake(0, 0, 80, 38);
     [middleBtn addTarget:self action:@selector(clickMiddleBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView=middleBtn;
+    
+    [self setupStatusData];
+}
+
+-(void) setupStatusData{
+    Account *account=[Util getAccount];
+    AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
+    requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
+    NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
+    parameters[@"source"]=AppKey;
+    parameters[@"access_token"]=account.access_token;
+    [requestManager GET:StatusDataURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *jsonArray=responseObject[@"statuses"];
+        self.status=[Status objectArrayWithKeyValuesArray:jsonArray];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
 }
 
 -(void) friendSearch{
@@ -59,32 +87,54 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.status.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *identifer=@"MyCel111l";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    if (cell==nil) {
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
+    }
+    Status *status=self.status[indexPath.row];
+    cell.textLabel.text=status.text;
+    User *user=status.user;
+    cell.detailTextLabel.text=user.name;
+    [cell.imageView setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageWithName:@"tabbar_compose_button"]];
     
-    // Configure the cell...
     
     return cell;
 }
-*/
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // 1.创建cell
+//    static NSString *ID = @"cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+//    }
+//    
+//    // 2.设置cell的数据
+//    // 微博的文字(内容)
+//    Status *status = self.status[indexPath.row];
+//    cell.textLabel.text = status.text;
+//    
+//    // 微博作者的昵称
+//    User *user = status.user;
+//    cell.detailTextLabel.text = user.name;
+//    
+//    // 微博作者的头像
+//    [cell.imageView setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageWithName:@"tabbar_compose_button"]];
+//    
+//    return cell;
+//}
+
 
 /*
 // Override to support conditional editing of the table view.
