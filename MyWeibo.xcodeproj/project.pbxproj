@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		560F6F401AAD732F002EDE1B /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F3F1AAD732F002EDE1B /* SearhField.m */; };
 		56333BE41AA978D1002B62AA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */; };
 		56333BE51AA978D1002B62AA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56333BE11AA978D1002B62AA /* MBProgressHUD.bundle */; };
 		56333BE61AA978D1002B62AA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE31AA978D1002B62AA /* MBProgressHUD.m */; };
@@ -63,7 +64,6 @@
 		56A759101AA5955A00EB96AD /* TabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A7590F1AA5955A00EB96AD /* TabBarButton.m */; };
 		56A759131AA6D22F00EB96AD /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759121AA6D22F00EB96AD /* CustomNavigationController.m */; };
 		56A759191AA7038100EB96AD /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759181AA7038100EB96AD /* UIBarButtonItem+Custom.m */; };
-		56A7591C1AA709E500EB96AD /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A7591B1AA709E500EB96AD /* SearhField.m */; };
 		56A7591F1AA7EE5500EB96AD /* NewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A7591E1AA7EE5500EB96AD /* NewFeatureController.m */; };
 		56A759241AA96D2600EB96AD /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759231AA96D2600EB96AD /* Util.m */; };
 		56C2CB461AA74AEE0009480B /* ButtonWithRightIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */; };
@@ -91,6 +91,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		560F6F3E1AAD732F002EDE1B /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearhField.h; sourceTree = "<group>"; };
+		560F6F3F1AAD732F002EDE1B /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearhField.m; sourceTree = "<group>"; };
 		56333BDF1AA978D1002B62AA /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		56333BE11AA978D1002B62AA /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -196,8 +198,6 @@
 		56A759121AA6D22F00EB96AD /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		56A759171AA7038100EB96AD /* UIBarButtonItem+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Custom.h"; sourceTree = "<group>"; };
 		56A759181AA7038100EB96AD /* UIBarButtonItem+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Custom.m"; sourceTree = "<group>"; };
-		56A7591A1AA709E500EB96AD /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearhField.h; path = ../../Others/View/SearhField.h; sourceTree = "<group>"; };
-		56A7591B1AA709E500EB96AD /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearhField.m; path = ../../Others/View/SearhField.m; sourceTree = "<group>"; };
 		56A7591D1AA7EE5500EB96AD /* NewFeatureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureController.h; sourceTree = "<group>"; };
 		56A7591E1AA7EE5500EB96AD /* NewFeatureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureController.m; sourceTree = "<group>"; };
 		56A759211AA96CC900EB96AD /* OAuthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthInfo.h; sourceTree = "<group>"; };
@@ -459,8 +459,8 @@
 		56A758E01AA5607500EB96AD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				56A7591A1AA709E500EB96AD /* SearhField.h */,
-				56A7591B1AA709E500EB96AD /* SearhField.m */,
+				560F6F3E1AAD732F002EDE1B /* SearhField.h */,
+				560F6F3F1AAD732F002EDE1B /* SearhField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -606,7 +606,6 @@
 				56A758FA1AA5607500EB96AD /* Category */,
 				56A758FB1AA5607500EB96AD /* Controller */,
 				56A758FC1AA5607500EB96AD /* Model */,
-				56A758FD1AA5607500EB96AD /* View */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -636,13 +635,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		56A758FD1AA5607500EB96AD /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		56A7590A1AA5827900EB96AD /* View */ = {
@@ -833,6 +825,7 @@
 				56333C3C1AA9A0A6002B62AA /* UIImage+GIF.m in Sources */,
 				56333BE41AA978D1002B62AA /* MBProgressHUD+MJ.m in Sources */,
 				56333C321AA9A0A6002B62AA /* MKAnnotationView+WebCache.m in Sources */,
+				560F6F401AAD732F002EDE1B /* SearhField.m in Sources */,
 				56333C2F1AA9A0A6002B62AA /* MJRefreshConst.m in Sources */,
 				56333C391AA9A0A6002B62AA /* SDWebImageManager.m in Sources */,
 				56C9BB9B1AA8A04C003DDE13 /* AFHTTPRequestOperation.m in Sources */,
@@ -881,7 +874,6 @@
 				56A7591F1AA7EE5500EB96AD /* NewFeatureController.m in Sources */,
 				56348CF81AA453F000D30E0D /* main.m in Sources */,
 				56A759131AA6D22F00EB96AD /* CustomNavigationController.m in Sources */,
-				56A7591C1AA709E500EB96AD /* SearhField.m in Sources */,
 				56333C331AA9A0A6002B62AA /* NSData+ImageContentType.m in Sources */,
 				56C9BB9C1AA8A04C003DDE13 /* AFHTTPRequestOperationManager.m in Sources */,
 				56C9BB9F1AA8A04C003DDE13 /* AFSecurityPolicy.m in Sources */,
