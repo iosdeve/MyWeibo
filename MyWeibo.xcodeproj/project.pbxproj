@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		560F6F401AAD732F002EDE1B /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F3F1AAD732F002EDE1B /* SearhField.m */; };
+		560F6F441AAD9F94002EDE1B /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F431AAD9F94002EDE1B /* StatusCell.m */; };
 		56333BE41AA978D1002B62AA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */; };
 		56333BE51AA978D1002B62AA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56333BE11AA978D1002B62AA /* MBProgressHUD.bundle */; };
 		56333BE61AA978D1002B62AA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE31AA978D1002B62AA /* MBProgressHUD.m */; };
@@ -93,6 +94,8 @@
 /* Begin PBXFileReference section */
 		560F6F3E1AAD732F002EDE1B /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearhField.h; sourceTree = "<group>"; };
 		560F6F3F1AAD732F002EDE1B /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearhField.m; sourceTree = "<group>"; };
+		560F6F421AAD9F94002EDE1B /* StatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCell.h; sourceTree = "<group>"; };
+		560F6F431AAD9F94002EDE1B /* StatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusCell.m; sourceTree = "<group>"; };
 		56333BDF1AA978D1002B62AA /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		56333BE11AA978D1002B62AA /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -500,6 +503,8 @@
 			children = (
 				56C2CB441AA74AEE0009480B /* ButtonWithRightIcon.h */,
 				56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */,
+				560F6F421AAD9F94002EDE1B /* StatusCell.h */,
+				560F6F431AAD9F94002EDE1B /* StatusCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -833,6 +838,7 @@
 				56A758FF1AA5607500EB96AD /* HomeController.m in Sources */,
 				566331C61AA5EA9800D43BF9 /* BadgeButton.m in Sources */,
 				56333C301AA9A0A6002B62AA /* MJRefreshFooterView.m in Sources */,
+				560F6F441AAD9F94002EDE1B /* StatusCell.m in Sources */,
 				56333C271AA9A0A6002B62AA /* MJMethod.m in Sources */,
 				56333C3E1AA9A0A6002B62AA /* UIImage+WebP.m in Sources */,
 				56A759011AA5607500EB96AD /* MeController.m in Sources */,
