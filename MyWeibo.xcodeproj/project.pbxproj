@@ -67,6 +67,7 @@
 		56A759191AA7038100EB96AD /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759181AA7038100EB96AD /* UIBarButtonItem+Custom.m */; };
 		56A7591F1AA7EE5500EB96AD /* NewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A7591E1AA7EE5500EB96AD /* NewFeatureController.m */; };
 		56A759241AA96D2600EB96AD /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759231AA96D2600EB96AD /* Util.m */; };
+		56BF851B1AB5B721003D7308 /* StatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BF851A1AB5B721003D7308 /* StatusFrame.m */; };
 		56C2CB461AA74AEE0009480B /* ButtonWithRightIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */; };
 		56C9BB661AA88DAF003DDE13 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9BB651AA88DAF003DDE13 /* LoginController.m */; };
 		56C9BB9B1AA8A04C003DDE13 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9BB891AA8A04C003DDE13 /* AFHTTPRequestOperation.m */; };
@@ -206,6 +207,8 @@
 		56A759211AA96CC900EB96AD /* OAuthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthInfo.h; sourceTree = "<group>"; };
 		56A759221AA96D2600EB96AD /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		56A759231AA96D2600EB96AD /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		56BF85191AB5B721003D7308 /* StatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusFrame.h; sourceTree = "<group>"; };
+		56BF851A1AB5B721003D7308 /* StatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusFrame.m; sourceTree = "<group>"; };
 		56C2CB441AA74AEE0009480B /* ButtonWithRightIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonWithRightIcon.h; sourceTree = "<group>"; };
 		56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonWithRightIcon.m; sourceTree = "<group>"; };
 		56C9BB641AA88DAF003DDE13 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -494,6 +497,8 @@
 				56333C411AA9A172002B62AA /* Status.m */,
 				56333C431AA9A182002B62AA /* User.h */,
 				56333C441AA9A182002B62AA /* User.m */,
+				56BF85191AB5B721003D7308 /* StatusFrame.h */,
+				56BF851A1AB5B721003D7308 /* StatusFrame.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -854,6 +859,7 @@
 				56333C251AA9A0A6002B62AA /* MJIvar.m in Sources */,
 				56348CFC1AA453F000D30E0D /* AppDelegate.m in Sources */,
 				56C9BB9E1AA8A04C003DDE13 /* AFNetworkReachabilityManager.m in Sources */,
+				56BF851B1AB5B721003D7308 /* StatusFrame.m in Sources */,
 				56C9BBA31AA8A04C003DDE13 /* AFURLSessionManager.m in Sources */,
 				56333C311AA9A0A6002B62AA /* MJRefreshHeaderView.m in Sources */,
 				56333C2E1AA9A0A6002B62AA /* MJRefreshBaseView.m in Sources */,

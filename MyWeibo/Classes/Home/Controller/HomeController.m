@@ -17,10 +17,14 @@
 #import "Status.h"
 #import "User.h"
 #import "UIImageView+WebCache.h"
+#import "StatusFrame.h"
+#import "StatusCell.h"
 
 @interface HomeController ()
 //微博数据模型
 @property(nonatomic, strong) NSArray *status;
+//微博数据转换成的Frame模型
+@property(nonatomic, strong) NSMutableArray *statusFrames;
 
 @end
 
@@ -30,7 +34,8 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        //初始化微博数据转换成的Frame模型
+        self.statusFrames=[NSMutableArray array];
     }
     return self;
 }
@@ -62,7 +67,16 @@
     parameters[@"access_token"]=account.access_token;
     [requestManager GET:StatusDataURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *jsonArray=responseObject[@"statuses"];
-        self.status=[Status objectArrayWithKeyValuesArray:jsonArray];
+        //json对象转换成微博数据模型
+        NSArray *statusData=[Status objectArrayWithKeyValuesArray:jsonArray];
+        //根据微博数据模型构造微博的Frame模型
+        NSMutableArray *tempFrames=[NSMutableArray array];
+        for (Status *st in statusData) {
+            StatusFrame *statusFrame=[[StatusFrame alloc] init];
+            statusFrame.status=st;
+            [tempFrames addObject:statusFrame];
+        }
+        [self.statusFrames addObjectsFromArray:tempFrames];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -90,25 +104,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.status.count;
+    return self.statusFrames.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifer=@"MyCel111l";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    StatusCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
     if (cell==nil) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
+        cell=[[StatusCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
     }
-    Status *status=self.status[indexPath.row];
-    cell.textLabel.text=status.text;
-    User *user=status.user;
-    cell.detailTextLabel.text=user.name;
-    [cell.imageView setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageWithName:@"tabbar_compose_button"]];
-    
-    
+    StatusFrame *sf=self.statusFrames[indexPath.row];
+    cell.statusFrame=sf;
     return cell;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    StatusFrame *sf=self.statusFrames[indexPath.row];
+    return sf.cellHight;
 }
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

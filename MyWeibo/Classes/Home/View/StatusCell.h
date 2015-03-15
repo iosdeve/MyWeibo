@@ -7,7 +7,10 @@
 //  自定义微博展示的UITableViewCell
 
 #import <UIKit/UIKit.h>
+@class StatusFrame;
 
 @interface StatusCell : UITableViewCell
+
+@property(nonatomic, strong) StatusFrame *statusFrame;
 
 @end

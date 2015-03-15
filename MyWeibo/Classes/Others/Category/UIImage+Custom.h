@@ -27,4 +27,6 @@
  */
 +(UIImage *) imageResize:(NSString *) name;
 
++(UIImage *) imageResize:(NSString *) name left:(CGFloat) left top:(CGFloat) top;
+
 @end
