@@ -35,6 +35,9 @@
 @property(nonatomic,assign) CGRect retweetStatusTextF;
 //转发微博的配图
 @property(nonatomic,assign) CGRect retweetPhotoF;
+//微博底部工具条的frame
+@property(nonatomic,assign) CGRect toolBarF;
+
 //微博表格的高度
 @property(nonatomic,assign) CGFloat cellHight;
 

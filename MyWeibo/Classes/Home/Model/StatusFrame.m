@@ -19,7 +19,7 @@
     _status=status;
     //整个cell的宽度
     //原创微博的背景图片
-    CGFloat cellW=[UIScreen mainScreen].bounds.size.width;
+    CGFloat cellW=[UIScreen mainScreen].bounds.size.width-2*GlobalCellMargin;
     CGFloat statusBackgroundX=0;
     CGFloat statusBackgroundY=0;
     CGFloat statusBackgroundW=cellW;
@@ -41,21 +41,11 @@
         CGFloat vipIconWH=14.0;
         _vipIconF=CGRectMake(vipIconX, vipIconY, vipIconWH, vipIconWH);
     }
-    //原创微博的发布时间
-    CGFloat createTimeX=userTextX;
-    CGFloat createTimeY=CGRectGetMaxY(_userTextF)+GlobalCellMargin;
-    CGSize createTimeSize=[status.created_at sizeWithFont:CellSourceCreateFont];
-    _createTimeF=(CGRect){{createTimeX,createTimeY}, createTimeSize};
-    //原创微博的发布来源
-    CGFloat sourceTextX=CGRectGetMaxX(_createTimeF)+GlobalCellMargin;
-    CGFloat sourceTextY=createTimeY;
-    CGSize sourceTextSize=[status.source sizeWithFont:CellSourceCreateFont];
-    _sourceTextF=(CGRect){{sourceTextX, sourceTextY},sourceTextSize};
+    
     //原创微博的内容
     CGFloat statusTextX=userIconX;
     CGFloat statusTextY=CGRectGetMaxY(_userIconF)+GlobalCellMargin;
     CGSize statusTextSize=[status.text sizeWithFont:CellStatusTextFont constrainedToSize:CGSizeMake(cellW-2*GlobalCellMargin, MAXFLOAT)];
-    NSLog(@"%@--%@",NSStringFromCGSize(statusTextSize),status.text);
     _statusTextF=(CGRect){{statusTextX,statusTextY},statusTextSize};
     if (status.thumbnail_pic) {
         //原创微博的配图
@@ -73,7 +63,9 @@
         //转发微博的用户昵称
         CGFloat retweetUserTextX=GlobalCellMargin;
         CGFloat retweetUserTextY=GlobalCellMargin;
-        CGSize retweetUserTextSize=[status.retweeted_status.user.name sizeWithFont:CellNickNameFont];
+        //转发微博昵称前体啊就@符号，尺寸也计算在内
+        NSString *retweetNickName=[NSString stringWithFormat:@"@%@",status.retweeted_status.user.name];
+        CGSize retweetUserTextSize=[retweetNickName sizeWithFont:CellNickNameFont];
         _retweetUserTextF=(CGRect){{retweetUserTextX,retweetUserTextY},retweetUserTextSize};
         //转发微博的内容
         CGFloat retweetStatusTextX=retweetUserTextX;
@@ -101,7 +93,15 @@
         }
     }
     _statusBackgroundF=CGRectMake(statusBackgroundX, statusBackgroundY, statusBackgroundW, statusBackgroundH);
-    _cellHight=statusBackgroundH+GlobalCellMargin;
+    
+    //微博底部工具条的frame
+    CGFloat toolBarX=statusBackgroundX;
+    CGFloat toolBarY=CGRectGetMaxY(_statusBackgroundF);
+    CGFloat toolBarW=statusBackgroundW;
+    CGFloat toolBarH=35;
+    _toolBarF=CGRectMake(toolBarX, toolBarY, toolBarW, toolBarH);
+    
+    _cellHight=CGRectGetMaxY(_toolBarF)+GlobalCellMargin;
 }
 
 @end

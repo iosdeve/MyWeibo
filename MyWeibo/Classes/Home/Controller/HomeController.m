@@ -54,6 +54,10 @@
     middleBtn.frame=CGRectMake(0, 0, 80, 38);
     [middleBtn addTarget:self action:@selector(clickMiddleBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView=middleBtn;
+    //设置tableview的背景颜色
+    self.tableView.backgroundColor=MyColor(226,226,226);
+    //设置tableview顶部和底部的预留间隙
+    self.tableView.contentInset=UIEdgeInsetsMake(GlobalCellMargin, 0, GlobalCellMargin, 0);
     
     [self setupStatusData];
 }

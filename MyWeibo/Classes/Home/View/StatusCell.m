@@ -39,6 +39,9 @@
 //转发微博的配图
 @property(nonatomic,weak) UIImageView *retweetPhoto;
 
+//微博底部的工具条
+@property(nonatomic, weak) UIImageView *toolBar;
+
 @end
 
 @implementation StatusCell
@@ -51,14 +54,24 @@
         [self setupStatusSubViews];
         [self setupRetweetStatusSubViews];
         [self setupBootomBar];
+        //设置选中单元格的背景颜色为空，改变默认的选中背景变蓝
+        self.selectedBackgroundView=[[UIView alloc] init];
     }
     return self;
+}
+
+-(void)setFrame:(CGRect)frame{
+    frame.origin.x=GlobalCellMargin;
+    frame.size.width=frame.size.width-2*GlobalCellMargin;
+    [super setFrame:frame];
+    
 }
 
 -(void)setStatusFrame:(StatusFrame *)statusFrame{
     _statusFrame=statusFrame;
     [self setupStatusSubViewsData];
     [self setupRetweetStatusSubViewsData];
+    [self setupBootomBarData];
 }
 
 /**
@@ -85,20 +98,26 @@
     //原创微博的用户昵称
     UILabel *userText=[[UILabel alloc] init];
     userText.font=CellNickNameFont;
+    userText.backgroundColor=[UIColor clearColor];;
     [self.statusBackground addSubview:userText];
     self.userText=userText;
     //原创微博的发布时间
     UILabel *createTime=[[UILabel alloc] init];
+    createTime.backgroundColor=[UIColor clearColor];
     createTime.font=CellSourceCreateFont;
+    createTime.textColor=CellCreateColor;
     [self.statusBackground addSubview:createTime];
     self.createTime=createTime;
     //原创微博的发布来源
     UILabel *sourceText=[[UILabel alloc] init];
+    sourceText.backgroundColor=[UIColor clearColor];
     sourceText.font=CellSourceCreateFont;
+    sourceText.textColor=CellSourceColor;
     [self.statusBackground addSubview:sourceText];
     self.sourceText=sourceText;
     //原创微博的内容
     UILabel *statusText=[[UILabel alloc] init];
+    statusText.backgroundColor=[UIColor clearColor];
     statusText.font=CellStatusTextFont;
     statusText.numberOfLines=0;
     [self.statusBackground addSubview:statusText];
@@ -137,10 +156,20 @@
     self.userText.frame=self.statusFrame.userTextF;
     //原创微博的发布时间
     self.createTime.text=self.statusFrame.status.created_at;
+    //原创微博的发布时间的frame
+    CGFloat createTimeX=CGRectGetMaxX(self.statusFrame.userIconF)+GlobalCellMargin;
+    CGFloat createTimeY=CGRectGetMaxY(self.statusFrame.userTextF)+GlobalCellMargin;
+    CGSize createTimeSize=[self.statusFrame.status.created_at sizeWithFont:CellSourceCreateFont];
+    self.statusFrame.createTimeF=(CGRect){{createTimeX,createTimeY}, createTimeSize};
     self.createTime.frame=self.statusFrame.createTimeF;
     //原创微博的发布来源
     self.sourceText.text=self.statusFrame.status.source;
-    self.sourceText.frame=self.statusFrame.sourceTextF;
+    //原创微博的发布来源的frame
+    CGFloat sourceTextX=CGRectGetMaxX(self.statusFrame.createTimeF)+GlobalCellMargin;
+    CGFloat sourceTextY=self.statusFrame.createTimeF.origin.y;
+    CGSize sourceTextSize=[self.statusFrame.status.source sizeWithFont:CellSourceCreateFont];
+    self.statusFrame.sourceTextF=(CGRect){{sourceTextX, sourceTextY},sourceTextSize};
+    self.sourceText.frame= self.statusFrame.sourceTextF;
     //原创微博的内容
     self.statusText.text=self.statusFrame.status.text;
     self.statusText.frame=self.statusFrame.statusTextF;
@@ -157,13 +186,16 @@
     self.retweetStatusBackground=retweetStatusBackground;
     //转发微博的用户昵称
     UILabel *retweetUserText=[[UILabel alloc] init];
+    retweetUserText.backgroundColor=[UIColor clearColor];
     retweetUserText.font=CellNickNameFont;
+    retweetUserText.textColor=CellRetweetNickNameColor;
     [self.retweetStatusBackground addSubview:retweetUserText];
     self.retweetUserText=retweetUserText;
     //转发微博的内容
     UILabel *retweetStatusText=[[UILabel alloc] init];
     retweetStatusText.font=CellStatusTextFont;
     retweetStatusText.numberOfLines=0;
+    retweetStatusText.backgroundColor=[UIColor clearColor];
     [self.retweetStatusBackground addSubview:retweetStatusText];
     self.retweetStatusText=retweetStatusText;
     //转发微博的配图
@@ -173,7 +205,7 @@
 }
 
 /**
- *  设置转发微博的视图
+ *  设置转发微博的视图数据内容
  */
 -(void) setupRetweetStatusSubViewsData{
     if (self.statusFrame.status.retweeted_status) {
@@ -181,7 +213,8 @@
         //转发微博的背景图片
         self.retweetStatusBackground.frame=self.statusFrame.retweetStatusBackgroundF;
         //转发微博的用户昵称
-        self.retweetUserText.text=self.statusFrame.status.retweeted_status.user.name;
+        NSString *retweetNickName=[NSString stringWithFormat:@"@%@",self.statusFrame.status.retweeted_status.user.name];
+        self.retweetUserText.text=retweetNickName;
         self.retweetUserText.frame=self.statusFrame.retweetUserTextF;
         //转发微博的内容
         self.retweetStatusText.text=self.statusFrame.status.retweeted_status.text;
@@ -203,7 +236,17 @@
  *  设置微博底部工具条
  */
 -(void) setupBootomBar{
-    
+    UIImageView *toolBar=[[UIImageView alloc] init];
+    toolBar.image=[UIImage imageResize:@"timeline_card_bottom_background"];
+    [self.contentView addSubview:toolBar];
+    self.toolBar=toolBar;
+}
+
+/**
+ *  设置微博底部工具条的数据
+ */
+-(void) setupBootomBarData{
+    self.toolBar.frame=self.statusFrame.toolBarF;
 }
 
 @end
