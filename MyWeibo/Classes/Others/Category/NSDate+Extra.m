@@ -29,10 +29,7 @@
     //获取当前date的年月日
     NSDateComponents *toComponents=[calend components:unit fromDate:self];
     //获取传入date和当前date的时分秒差
-    NSDateFormatter *formate2=[[NSDateFormatter alloc] init];
-    formate2.dateFormat=@"yyyy-MM-dd hh:mm";
-    NSDate *d2=[formate2 dateFromString:@"2015-03-16 18:30"];
-    NSDateComponents *hmsCompent=[calend components:NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:d2 toDate:date options:0];
+    NSDateComponents *hmsCompent=[calend components:NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:date toDate:self options:0];
     NSDateFormatter *formate=[[NSDateFormatter alloc] init];
     //如果是当天
     if (toComponents.year==fromComponents.year && toComponents.month==fromComponents.month && toComponents.day==fromComponents.day) {
@@ -50,13 +47,13 @@
         if (hmsCompent.hour>24 && hmsCompent.hour<48) {
             timeDes=[NSString stringWithFormat:@"昨天"];
         }else{
-            timeDes=[NSString stringWithFormat:@"%d天前",hmsCompent.day];
+            timeDes=[NSString stringWithFormat:@"%d天前",toComponents.day-fromComponents.day];
         }
     }else if(toComponents.year==fromComponents.year){
-        formate.dateFormat=@"MM-dd HH;mm";
+        formate.dateFormat=@"MM-dd HH:mm";
         timeDes=[formate stringFromDate:date];
     }else{
-        formate.dateFormat=@"yyyy-MM-dd HH;mm";
+        formate.dateFormat=@"yyyy-MM-dd HH:mm";
         timeDes=[formate stringFromDate:date];
     }
     return timeDes;

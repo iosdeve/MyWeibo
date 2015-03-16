@@ -81,6 +81,7 @@
     //背景图片
     UIImageView *statusBackground=[[UIImageView alloc] init];
     statusBackground.image=[UIImage imageResize:@"timeline_card_top_background"];
+    statusBackground.highlightedImage=[UIImage imageResize:@"timeline_card_top_background_highlighted"];
     [self.contentView addSubview:statusBackground];
     self.statusBackground=statusBackground;
     //原创微博用户图标
@@ -89,6 +90,7 @@
     self.userIcon=userIcon;
     //原创微博的VIP图片
     UIImageView *vipIcon=[[UIImageView alloc] init];
+    vipIcon.contentMode=UIViewContentModeCenter;
     [self.statusBackground addSubview:vipIcon];
     self.vipIcon=vipIcon;
     //原创微博的配图
@@ -137,7 +139,7 @@
     //原创微博的VIP图片
     if (self.statusFrame.status.user.isVip) {
         self.vipIcon.hidden=NO;
-        self.vipIcon.image=[UIImage imageWithName:@"common_icon_membership"];
+        self.vipIcon.image=[UIImage imageWithName:[NSString stringWithFormat:@"common_icon_membership_level%d",self.statusFrame.status.user.mbrank]];
         self.vipIcon.frame=self.statusFrame.vipIconF;
     }else{
         self.vipIcon.hidden=YES;
@@ -238,6 +240,7 @@
 -(void) setupBootomBar{
     UIImageView *toolBar=[[UIImageView alloc] init];
     toolBar.image=[UIImage imageResize:@"timeline_card_bottom_background"];
+    toolBar.highlightedImage=[UIImage imageResize:@"timeline_card_bottom_background_highlighted"];
     [self.contentView addSubview:toolBar];
     self.toolBar=toolBar;
 }
