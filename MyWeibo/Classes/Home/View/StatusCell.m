@@ -11,6 +11,7 @@
 #import "Status.h"
 #import "UIImageView+WebCache.h"
 #import "User.h"
+#import "StatusToolBar.h"
 
 @interface StatusCell ()
 //原创微博的背景图片
@@ -40,7 +41,7 @@
 @property(nonatomic,weak) UIImageView *retweetPhoto;
 
 //微博底部的工具条
-@property(nonatomic, weak) UIImageView *toolBar;
+@property(nonatomic, weak) StatusToolBar *toolBar;
 
 @end
 
@@ -238,7 +239,7 @@
  *  设置微博底部工具条
  */
 -(void) setupBootomBar{
-    UIImageView *toolBar=[[UIImageView alloc] init];
+    StatusToolBar *toolBar=[[StatusToolBar alloc] init];
     toolBar.image=[UIImage imageResize:@"timeline_card_bottom_background"];
     toolBar.highlightedImage=[UIImage imageResize:@"timeline_card_bottom_background_highlighted"];
     [self.contentView addSubview:toolBar];
