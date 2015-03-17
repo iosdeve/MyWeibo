@@ -250,6 +250,7 @@
  *  设置微博底部工具条的数据
  */
 -(void) setupBootomBarData{
+    self.toolBar.status=self.statusFrame.status;
     self.toolBar.frame=self.statusFrame.toolBarF;
 }
 
