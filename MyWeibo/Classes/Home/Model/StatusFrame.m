@@ -9,6 +9,7 @@
 #import "StatusFrame.h"
 #import "Status.h"
 #import "User.h"
+#import "StatusPictureView.h"
 
 @implementation StatusFrame
 
@@ -51,8 +52,8 @@
         //原创微博的配图
         CGFloat photoX=userIconX;
         CGFloat photoY=CGRectGetMaxY(_statusTextF)+GlobalCellMargin;
-        CGFloat photoWH=70.0;
-        _photoF=CGRectMake(photoX, photoY, photoWH, photoWH);
+        CGSize photoSize=[StatusPictureView thisViewSize:status.pic_urls.count];
+        _photoF=(CGRect) {{photoX,photoY},photoSize};
     }
     if (status.retweeted_status) {
         //转发微博的背景图片

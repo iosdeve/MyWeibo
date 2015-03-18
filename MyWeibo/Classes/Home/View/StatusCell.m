@@ -13,6 +13,7 @@
 #import "User.h"
 #import "StatusToolBar.h"
 #import "StatusPhoto.h"
+#import "StatusPictureView.h"
 
 @interface StatusCell ()
 //原创微博的背景图片
@@ -22,7 +23,7 @@
 //原创微博的VIP图片
 @property(nonatomic,weak) UIImageView *vipIcon;
 //原创微博的配图
-@property(nonatomic,weak) UIImageView *photo;
+@property(nonatomic,weak) StatusPictureView *photo;
 //原创微博的用户昵称
 @property(nonatomic,weak) UILabel *userText;
 //原创微博的发布时间
@@ -39,7 +40,7 @@
 //转发微博的内容
 @property(nonatomic,weak) UILabel *retweetStatusText;
 //转发微博的配图
-@property(nonatomic,weak) UIImageView *retweetPhoto;
+@property(nonatomic,weak) StatusPictureView *retweetPhoto;
 
 //微博底部的工具条
 @property(nonatomic, weak) StatusToolBar *toolBar;
@@ -96,7 +97,7 @@
     [self.statusBackground addSubview:vipIcon];
     self.vipIcon=vipIcon;
     //原创微博的配图
-    UIImageView *photo=[[UIImageView alloc] init];
+    StatusPictureView *photo=[[StatusPictureView alloc] init];
     [self.statusBackground addSubview:photo];
     self.photo=photo;
     //原创微博的用户昵称
@@ -148,8 +149,7 @@
     }
     if (self.statusFrame.status.pic_urls.count) {
         //原创微博的配图
-        NSString *imageURL=[self.statusFrame.status.pic_urls.lastObject thumbnail_pic];
-        [self.photo setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageWithName:@"timeline_image_placeholder"]];
+        self.photo.photos=self.statusFrame.status.pic_urls;
         self.photo.hidden=NO;
         self.photo.frame=self.statusFrame.photoF;
     }else{
@@ -204,7 +204,7 @@
     [self.retweetStatusBackground addSubview:retweetStatusText];
     self.retweetStatusText=retweetStatusText;
     //转发微博的配图
-    UIImageView *retweetPhoto=[[UIImageView alloc] init];
+    StatusPictureView *retweetPhoto=[[StatusPictureView alloc] init];
     [self.retweetStatusBackground addSubview:retweetPhoto];
     self.retweetPhoto=retweetPhoto;
 }
@@ -227,8 +227,7 @@
         //转发微博的配图
         if (self.statusFrame.status.retweeted_status.pic_urls.count) {
             self.retweetPhoto.hidden=NO;
-            NSString *imageURL=[self.statusFrame.status.retweeted_status.pic_urls.lastObject thumbnail_pic];
-            [self.retweetPhoto setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+            self.retweetPhoto.photos=elf.statusFrame.status.retweeted_status.pic_urls;
             self.retweetPhoto.frame=self.statusFrame.retweetPhotoF;
         }else{
             self.retweetPhoto.hidden=YES;

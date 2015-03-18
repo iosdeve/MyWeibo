@@ -37,4 +37,7 @@
 #define CellRetweetNickNameColor MyColor(67,107,163);
 //全局背景颜色
 #define GlobalBg MyColor(226,226,226)
-//
+//微博配图的宽高
+#define StatusPictureWH 70.0
+//微博配图之间的间隙
+#define StatusPictureMargin 70.0

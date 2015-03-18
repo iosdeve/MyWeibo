@@ -10,6 +10,8 @@
 		5608312F1AB6D9C900C14321 /* NSDate+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608312E1AB6D9C900C14321 /* NSDate+Extra.m */; };
 		560831321AB81AF400C14321 /* StatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 560831311AB81AF400C14321 /* StatusToolBar.m */; };
 		560831351AB93FDA00C14321 /* StatusPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 560831341AB93FDA00C14321 /* StatusPhoto.m */; };
+		560831381AB96EFB00C14321 /* StatusPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560831371AB96EFB00C14321 /* StatusPictureCell.m */; };
+		5608313B1AB9742B00C14321 /* StatusPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608313A1AB9742B00C14321 /* StatusPictureView.m */; };
 		560F6F401AAD732F002EDE1B /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F3F1AAD732F002EDE1B /* SearhField.m */; };
 		560F6F441AAD9F94002EDE1B /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F431AAD9F94002EDE1B /* StatusCell.m */; };
 		56333BE41AA978D1002B62AA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */; };
@@ -102,6 +104,10 @@
 		560831311AB81AF400C14321 /* StatusToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusToolBar.m; sourceTree = "<group>"; };
 		560831331AB93FDA00C14321 /* StatusPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPhoto.h; sourceTree = "<group>"; };
 		560831341AB93FDA00C14321 /* StatusPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPhoto.m; sourceTree = "<group>"; };
+		560831361AB96EFB00C14321 /* StatusPictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPictureCell.h; sourceTree = "<group>"; };
+		560831371AB96EFB00C14321 /* StatusPictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPictureCell.m; sourceTree = "<group>"; };
+		560831391AB9742B00C14321 /* StatusPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPictureView.h; sourceTree = "<group>"; };
+		5608313A1AB9742B00C14321 /* StatusPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPictureView.m; sourceTree = "<group>"; };
 		560F6F3E1AAD732F002EDE1B /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearhField.h; sourceTree = "<group>"; };
 		560F6F3F1AAD732F002EDE1B /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearhField.m; sourceTree = "<group>"; };
 		560F6F421AAD9F94002EDE1B /* StatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCell.h; sourceTree = "<group>"; };
@@ -523,6 +529,10 @@
 				560F6F431AAD9F94002EDE1B /* StatusCell.m */,
 				560831301AB81AF400C14321 /* StatusToolBar.h */,
 				560831311AB81AF400C14321 /* StatusToolBar.m */,
+				560831361AB96EFB00C14321 /* StatusPictureCell.h */,
+				560831371AB96EFB00C14321 /* StatusPictureCell.m */,
+				560831391AB9742B00C14321 /* StatusPictureView.h */,
+				5608313A1AB9742B00C14321 /* StatusPictureView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -871,6 +881,7 @@
 				56333C421AA9A172002B62AA /* Status.m in Sources */,
 				56333C281AA9A0A6002B62AA /* MJType.m in Sources */,
 				56A758FE1AA5607500EB96AD /* DiscoverController.m in Sources */,
+				5608313B1AB9742B00C14321 /* StatusPictureView.m in Sources */,
 				56C9BBA71AA8A2F3003DDE13 /* Account.m in Sources */,
 				56333C251AA9A0A6002B62AA /* MJIvar.m in Sources */,
 				56348CFC1AA453F000D30E0D /* AppDelegate.m in Sources */,
@@ -882,6 +893,7 @@
 				5608312F1AB6D9C900C14321 /* NSDate+Extra.m in Sources */,
 				56333C3B1AA9A0A6002B62AA /* UIButton+WebCache.m in Sources */,
 				56333C261AA9A0A6002B62AA /* MJMember.m in Sources */,
+				560831381AB96EFB00C14321 /* StatusPictureCell.m in Sources */,
 				56333C291AA9A0A6002B62AA /* MJTypeEncoding.m in Sources */,
 				56333C3F1AA9A0A6002B62AA /* UIImageView+WebCache.m in Sources */,
 				56333C341AA9A0A6002B62AA /* SDImageCache.m in Sources */,
