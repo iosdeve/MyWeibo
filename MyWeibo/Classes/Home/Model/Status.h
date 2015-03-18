@@ -7,7 +7,7 @@
 //  微博模型
 
 #import <Foundation/Foundation.h>
-@class User;
+@class User, StatusPhoto;
 
 @interface Status : NSObject
 /**
@@ -23,9 +23,9 @@
  */
 @property(nonatomic, copy) NSString *created_at;
 /**
- *  微博的单张配图
+ *  微博的配图数组
  */
-@property(nonatomic, copy) NSString *thumbnail_pic;
+@property(nonatomic, strong) NSArray *pic_urls;
 
 /**
  *  微博的ID

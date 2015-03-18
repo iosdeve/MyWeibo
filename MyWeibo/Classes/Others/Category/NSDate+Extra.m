@@ -33,7 +33,6 @@
     NSDateFormatter *formate=[[NSDateFormatter alloc] init];
     //如果是当天
     if (toComponents.year==fromComponents.year && toComponents.month==fromComponents.month && toComponents.day==fromComponents.day) {
-        NSLog(@"%d,%d,%d",hmsCompent.hour,hmsCompent.minute,hmsCompent.second);
         if (hmsCompent.hour>=1) {
             timeDes=[NSString stringWithFormat:@"%d小时前",hmsCompent.hour];
         }else if(hmsCompent.minute>=1){

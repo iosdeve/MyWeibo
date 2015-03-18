@@ -8,8 +8,15 @@
 
 #import "Status.h"
 #import "NSDate+Extra.h"
+#import "MJExtension.h"
+#import "StatusPhoto.h"
 
 @implementation Status
+
+-(NSDictionary *)objectClassInArray{
+    return @{@"pic_urls" : [StatusPhoto class]};
+}
+
 /**
  *  处理微博创建时间
  */

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5608312F1AB6D9C900C14321 /* NSDate+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608312E1AB6D9C900C14321 /* NSDate+Extra.m */; };
 		560831321AB81AF400C14321 /* StatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 560831311AB81AF400C14321 /* StatusToolBar.m */; };
+		560831351AB93FDA00C14321 /* StatusPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 560831341AB93FDA00C14321 /* StatusPhoto.m */; };
 		560F6F401AAD732F002EDE1B /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F3F1AAD732F002EDE1B /* SearhField.m */; };
 		560F6F441AAD9F94002EDE1B /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F431AAD9F94002EDE1B /* StatusCell.m */; };
 		56333BE41AA978D1002B62AA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */; };
@@ -99,6 +100,8 @@
 		5608312E1AB6D9C900C14321 /* NSDate+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extra.m"; sourceTree = "<group>"; };
 		560831301AB81AF400C14321 /* StatusToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusToolBar.h; sourceTree = "<group>"; };
 		560831311AB81AF400C14321 /* StatusToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusToolBar.m; sourceTree = "<group>"; };
+		560831331AB93FDA00C14321 /* StatusPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusPhoto.h; sourceTree = "<group>"; };
+		560831341AB93FDA00C14321 /* StatusPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusPhoto.m; sourceTree = "<group>"; };
 		560F6F3E1AAD732F002EDE1B /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearhField.h; sourceTree = "<group>"; };
 		560F6F3F1AAD732F002EDE1B /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearhField.m; sourceTree = "<group>"; };
 		560F6F421AAD9F94002EDE1B /* StatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCell.h; sourceTree = "<group>"; };
@@ -505,6 +508,8 @@
 				56333C441AA9A182002B62AA /* User.m */,
 				56BF85191AB5B721003D7308 /* StatusFrame.h */,
 				56BF851A1AB5B721003D7308 /* StatusFrame.m */,
+				560831331AB93FDA00C14321 /* StatusPhoto.h */,
+				560831341AB93FDA00C14321 /* StatusPhoto.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -896,6 +901,7 @@
 				56A759241AA96D2600EB96AD /* Util.m in Sources */,
 				56A759101AA5955A00EB96AD /* TabBarButton.m in Sources */,
 				56A7591F1AA7EE5500EB96AD /* NewFeatureController.m in Sources */,
+				560831351AB93FDA00C14321 /* StatusPhoto.m in Sources */,
 				56348CF81AA453F000D30E0D /* main.m in Sources */,
 				56A759131AA6D22F00EB96AD /* CustomNavigationController.m in Sources */,
 				56333C331AA9A0A6002B62AA /* NSData+ImageContentType.m in Sources */,

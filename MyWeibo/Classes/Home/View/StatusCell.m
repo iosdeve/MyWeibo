@@ -12,6 +12,7 @@
 #import "UIImageView+WebCache.h"
 #import "User.h"
 #import "StatusToolBar.h"
+#import "StatusPhoto.h"
 
 @interface StatusCell ()
 //原创微博的背景图片
@@ -145,9 +146,10 @@
     }else{
         self.vipIcon.hidden=YES;
     }
-    if (self.statusFrame.status.thumbnail_pic) {
+    if (self.statusFrame.status.pic_urls.count) {
         //原创微博的配图
-        [self.photo setImageWithURL:[NSURL URLWithString:self.statusFrame.status.thumbnail_pic] placeholderImage:[UIImage imageWithName:@"timeline_image_placeholder"]];
+        NSString *imageURL=[self.statusFrame.status.pic_urls.lastObject thumbnail_pic];
+        [self.photo setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageWithName:@"timeline_image_placeholder"]];
         self.photo.hidden=NO;
         self.photo.frame=self.statusFrame.photoF;
     }else{
@@ -223,9 +225,10 @@
         self.retweetStatusText.text=self.statusFrame.status.retweeted_status.text;
         self.retweetStatusText.frame=self.statusFrame.retweetStatusTextF;
         //转发微博的配图
-        if (self.statusFrame.status.retweeted_status.thumbnail_pic) {
+        if (self.statusFrame.status.retweeted_status.pic_urls.count) {
             self.retweetPhoto.hidden=NO;
-            [self.retweetPhoto setImageWithURL:[NSURL URLWithString:self.statusFrame.status.retweeted_status.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+            NSString *imageURL=[self.statusFrame.status.retweeted_status.pic_urls.lastObject thumbnail_pic];
+            [self.retweetPhoto setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
             self.retweetPhoto.frame=self.statusFrame.retweetPhotoF;
         }else{
             self.retweetPhoto.hidden=YES;

@@ -47,7 +47,7 @@
     CGFloat statusTextY=CGRectGetMaxY(_userIconF)+GlobalCellMargin;
     CGSize statusTextSize=[status.text sizeWithFont:CellStatusTextFont constrainedToSize:CGSizeMake(cellW-2*GlobalCellMargin, MAXFLOAT)];
     _statusTextF=(CGRect){{statusTextX,statusTextY},statusTextSize};
-    if (status.thumbnail_pic) {
+    if (status.pic_urls.count) {
         //原创微博的配图
         CGFloat photoX=userIconX;
         CGFloat photoY=CGRectGetMaxY(_statusTextF)+GlobalCellMargin;
@@ -73,7 +73,7 @@
         CGFloat retweetStatusTextW=retweetStatusBackgroundW-2*GlobalCellMargin;
         CGSize retweetStatusTextSize=[status.retweeted_status.text sizeWithFont:CellStatusTextFont constrainedToSize:CGSizeMake(retweetStatusTextW-2*GlobalCellMargin, MAXFLOAT)];
         _retweetStatusTextF=(CGRect){{retweetStatusTextX,retweetStatusTextY},retweetStatusTextSize};
-        if (status.retweeted_status.thumbnail_pic) {
+        if (status.retweeted_status.pic_urls.count) {
             //转发微博的配图
             CGFloat retweetPhotoX=retweetStatusTextX;
             CGFloat retweetPhotoY=CGRectGetMaxY(_retweetStatusTextF)+GlobalCellMargin;
@@ -86,7 +86,7 @@
         _retweetStatusBackgroundF=CGRectMake(retweetStatusBackgroundX, retweetStatusBackgroundY, retweetStatusBackgroundW, retweetStatusBackgroundH);
         statusBackgroundH=CGRectGetMaxY(_retweetStatusBackgroundF)+GlobalCellMargin;
     }else{
-        if (status.thumbnail_pic) {
+        if (status.pic_urls.count) {
             statusBackgroundH=CGRectGetMaxY(_photoF)+GlobalCellMargin;
         }else{
             statusBackgroundH=CGRectGetMaxY(_statusTextF)+GlobalCellMargin;

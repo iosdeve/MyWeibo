@@ -19,6 +19,7 @@
 #import "UIImageView+WebCache.h"
 #import "StatusFrame.h"
 #import "StatusCell.h"
+#import "StatusPhoto.h"
 
 @interface HomeController ()
 //微博数据模型
@@ -79,6 +80,8 @@
             StatusFrame *statusFrame=[[StatusFrame alloc] init];
             statusFrame.status=st;
             [tempFrames addObject:statusFrame];
+            StatusPhoto *photo=st.pic_urls.lastObject;
+            NSLog(@"%@",photo.thumbnail_pic);
         }
         [self.statusFrames addObjectsFromArray:tempFrames];
         [self.tableView reloadData];
