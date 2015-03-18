@@ -26,8 +26,10 @@
         UIImageView *gifView=[[UIImageView alloc] initWithImage:[UIImage imageWithName:@"timeline_image_gif"]];
         [self addSubview:gifView];
         self.gifView=gifView;
-        //设置图片模式，看到整个图片
-        self.contentMode=UIViewContentModeScaleAspectFit;
+        //设置图片模式，按比例填充后d的图片
+        self.contentMode=UIViewContentModeScaleAspectFill;
+        //减去超出的边缘
+        self.clipsToBounds=YES;
     }
     return self;
 }

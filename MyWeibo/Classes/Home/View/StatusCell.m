@@ -227,7 +227,7 @@
         //转发微博的配图
         if (self.statusFrame.status.retweeted_status.pic_urls.count) {
             self.retweetPhoto.hidden=NO;
-            self.retweetPhoto.photos=elf.statusFrame.status.retweeted_status.pic_urls;
+            self.retweetPhoto.photos=self.statusFrame.status.retweeted_status.pic_urls;
             self.retweetPhoto.frame=self.statusFrame.retweetPhotoF;
         }else{
             self.retweetPhoto.hidden=YES;

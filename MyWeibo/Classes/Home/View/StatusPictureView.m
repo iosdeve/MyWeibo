@@ -36,7 +36,16 @@
             int columns=photos.count==4 ? 2 :3;
             CGFloat cellX=(i%columns)*(StatusPictureWH+StatusPictureMargin);
             CGFloat cellY=(i/columns)*(StatusPictureWH+StatusPictureMargin);
-            cell.frame=CGRectMake(cellX, cellY, StatusPictureWH, StatusPictureWH);
+            if (photos.count==1) {
+                //如果图片只有一张，尺寸时九宫格的尺寸的2倍
+                cell.frame=CGRectMake(cellX, cellY, 2*StatusPictureWH, 2*StatusPictureWH);
+                //设置图片显示模式为全部显示在view中
+                cell.contentMode=UIViewContentModeScaleAspectFit;
+            }else{
+                cell.frame=CGRectMake(cellX, cellY, StatusPictureWH, StatusPictureWH);
+                //设置图片显示模式为充满，超出的部分会剪掉
+                cell.contentMode=UIViewContentModeScaleAspectFill;
+            }
         }else{
             cell.hidden=YES;
         }
@@ -45,6 +54,10 @@
 
 //返回微博配图的宽高，根据图片的数量
 +(CGSize) thisViewSize:(int) count{
+    if (count==1) {
+        //如果图片只有一张，直接返回一张的宽高
+        return CGSizeMake(StatusPictureWH*2, StatusPictureWH*2);
+    }
     int columns=count==4 ? 2 :3;
     int rows=(count+columns-1)/columns;
     CGFloat width=(columns-1)*(StatusPictureWH+StatusPictureMargin)+StatusPictureWH;

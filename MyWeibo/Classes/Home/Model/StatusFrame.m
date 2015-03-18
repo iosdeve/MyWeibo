@@ -78,8 +78,8 @@
             //转发微博的配图
             CGFloat retweetPhotoX=retweetStatusTextX;
             CGFloat retweetPhotoY=CGRectGetMaxY(_retweetStatusTextF)+GlobalCellMargin;
-            CGFloat retweetPhotoWH=70.0;
-            _retweetPhotoF=CGRectMake(retweetPhotoX,retweetPhotoY,retweetPhotoWH,retweetPhotoWH);
+            CGSize retweetPhotoSize=[StatusPictureView thisViewSize:status.retweeted_status.pic_urls.count];
+            _retweetPhotoF=(CGRect){{retweetPhotoX,retweetPhotoY},retweetPhotoSize};
             retweetStatusBackgroundH=CGRectGetMaxY(_retweetPhotoF)+GlobalCellMargin;
         }else{
             retweetStatusBackgroundH=CGRectGetMaxY(_retweetStatusTextF)+GlobalCellMargin;

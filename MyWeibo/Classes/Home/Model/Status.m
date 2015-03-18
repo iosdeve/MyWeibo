@@ -31,6 +31,10 @@
  *
  */
 -(void)setSource:(NSString *)source{
+    if (source.length<1) {
+        _source=@"";
+        return;
+    }
     NSRange range1=[source rangeOfString:@">"];
     NSRange range2=[source rangeOfString:@"</"];
     NSString *newSource=[source substringWithRange:NSMakeRange(range1.location+1, range2.location-range1.location-1)];
