@@ -59,6 +59,8 @@
         [self setupBootomBar];
         //设置选中单元格的背景颜色为空，改变默认的选中背景变蓝
         self.selectedBackgroundView=[[UIView alloc] init];
+        //设置cell的北京颜色为透明 for ios7
+        self.backgroundColor=[UIColor clearColor];
     }
     return self;
 }
