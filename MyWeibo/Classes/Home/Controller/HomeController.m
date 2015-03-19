@@ -26,6 +26,8 @@
 @property(nonatomic, strong) NSArray *status;
 //微博数据转换成的Frame模型
 @property(nonatomic, strong) NSMutableArray *statusFrames;
+//刷新控件
+@property(nonatomic, weak) UIRefreshControl *refreshControl;
 
 @end
 
@@ -44,6 +46,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //添加刷新控件
+    [self addRefreshControl];
     //左边朋友
     self.navigationItem.leftBarButtonItem=[UIBarButtonItem barButtonItemWithIcon:@"navigationbar_friendsearch" hilightIcon:@"navigationbar_friendsearch_highlighted" target:self action:@selector(friendSearch)];
     //右边的扫一扫
@@ -58,9 +62,23 @@
     //设置tableview的背景颜色
     self.tableView.backgroundColor=MyColor(226,226,226);
     //设置tableview顶部和底部的预留间隙
-    self.tableView.contentInset=UIEdgeInsetsMake(GlobalCellMargin, 0, GlobalCellMargin, 0);
+//    self.tableView.contentInset=UIEdgeInsetsMake(GlobalCellMargin, 0, GlobalCellMargin, 0);
     //设置tableview的分割线为空
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+//    [self setupStatusData];
+    [self refreshStatusChange:self.refreshControl];
+}
+
+-(void) addRefreshControl{
+    UIRefreshControl *refreshControl=[[UIRefreshControl alloc] init];
+    [self.tableView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(refreshStatusChange:) forControlEvents:UIControlEventValueChanged];
+    [refreshControl beginRefreshing];
+    self.refreshControl=refreshControl;
+}
+
+//
+-(void) refreshStatusChange:(UIRefreshControl *) refresh{
     [self setupStatusData];
 }
 
@@ -71,6 +89,10 @@
     NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
     parameters[@"source"]=AppKey;
     parameters[@"access_token"]=account.access_token;
+    if (self.statusFrames.count) {
+        StatusFrame *sf=self.statusFrames[0];
+        parameters[@"since_id"]=sf.status.idstr;
+    }
     [requestManager GET:StatusDataURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *jsonArray=responseObject[@"statuses"];
         //json对象转换成微博数据模型
@@ -81,13 +103,18 @@
             StatusFrame *statusFrame=[[StatusFrame alloc] init];
             statusFrame.status=st;
             [tempFrames addObject:statusFrame];
-            StatusPhoto *photo=st.pic_urls.lastObject;
-            //NSLog(@"%@",photo.thumbnail_pic);
         }
-        [self.statusFrames addObjectsFromArray:tempFrames];
-        [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //[self.statusFrames addObjectsFromArray:tempFrames];
+        if (self.statusFrames.count) {
+            [self.statusFrames insertObjects:tempFrames atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tempFrames.count)]];
+        }else{
+            [self.statusFrames addObjectsFromArray:tempFrames];
+        }
         
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.refreshControl endRefreshing];
     }];
 }
 
