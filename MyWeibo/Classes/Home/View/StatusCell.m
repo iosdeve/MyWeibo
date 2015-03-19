@@ -85,6 +85,7 @@
 -(void) setupStatusSubViews{
     //背景图片
     UIImageView *statusBackground=[[UIImageView alloc] init];
+    statusBackground.userInteractionEnabled=YES;
     statusBackground.image=[UIImage imageResize:@"timeline_card_top_background"];
     statusBackground.highlightedImage=[UIImage imageResize:@"timeline_card_top_background_highlighted"];
     [self.contentView addSubview:statusBackground];
@@ -188,6 +189,7 @@
 -(void) setupRetweetStatusSubViews{
     //转发微博的背景图片
     UIImageView *retweetStatusBackground=[[UIImageView alloc] init];
+    retweetStatusBackground.userInteractionEnabled=YES;
     retweetStatusBackground.image=[UIImage imageResize:@"timeline_retweet_background" left:0.9 top:0.5];
     [self.statusBackground addSubview:retweetStatusBackground];
     self.retweetStatusBackground=retweetStatusBackground;

@@ -9,6 +9,8 @@
 #import "StatusPictureView.h"
 #import "StatusPhoto.h"
 #import "StatusPictureCell.h"
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
 
 @implementation StatusPictureView
 
@@ -19,13 +21,44 @@
         //为配图预设9张图片
         for (int i=0; i<9; i++) {
             StatusPictureCell *cell=[[StatusPictureCell alloc] init];
+            cell.tag=i;
+            //为单张图片添加点击事件
+            [cell addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickPhoto:)]];
             [self addSubview:cell];
         }
     }
     return self;
 }
+
+/**
+ *  点击微博配图后操作
+ */
+-(void) clickPhoto:(UIGestureRecognizer *) gesture{
+    StatusPictureCell *cell=(StatusPictureCell *)gesture.view;
+    int count=self.photos.count;
+    NSMutableArray *photoList=[[NSMutableArray alloc] initWithCapacity:count];
+    //用第三方框架集成图片浏览器
+    for (int i=0; i<count; i++) {
+        MJPhoto *photo=[[MJPhoto alloc] init];
+        StatusPhoto *photoModel=self.photos[i];
+        photo.srcImageView=cell;
+        NSString *imagURL=[photoModel.thumbnail_pic stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+        photo.url=[NSURL URLWithString:imagURL];
+        [photoList addObject:photo];
+    }
+   
+    MJPhotoBrowser *photoBrowser=[[MJPhotoBrowser alloc] init];
+    //设置图片数组
+    photoBrowser.photos=photoList;
+    //设置当要显示图片的索引
+    photoBrowser.currentPhotoIndex=cell.tag;
+    [photoBrowser show];
+    NSLog(@"%d",cell.tag);
+}
+
 //设置配图数据
 -(void)setPhotos:(NSArray *)photos{
+    _photos=photos;
     for (int i=0; i<self.subviews.count; i++) {
         StatusPictureCell *cell=self.subviews[i];
         //如果当前的图片的索引小于图片数据数量，则设置图片

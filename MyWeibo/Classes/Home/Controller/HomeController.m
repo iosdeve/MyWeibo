@@ -82,7 +82,7 @@
             statusFrame.status=st;
             [tempFrames addObject:statusFrame];
             StatusPhoto *photo=st.pic_urls.lastObject;
-            NSLog(@"%@",photo.thumbnail_pic);
+            //NSLog(@"%@",photo.thumbnail_pic);
         }
         [self.statusFrames addObjectsFromArray:tempFrames];
         [self.tableView reloadData];

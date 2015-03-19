@@ -30,6 +30,8 @@
         self.contentMode=UIViewContentModeScaleAspectFill;
         //减去超出的边缘
         self.clipsToBounds=YES;
+        //允许cell被点击
+        self.userInteractionEnabled=YES;
     }
     return self;
 }
