@@ -28,6 +28,7 @@
 @property(nonatomic, strong) NSMutableArray *statusFrames;
 //刷新控件
 @property(nonatomic, weak) UIRefreshControl *refreshControl;
+@property(nonatomic,weak) ButtonWithRightIcon *navMiddleView;
 
 @end
 
@@ -54,19 +55,23 @@
     self.navigationItem.rightBarButtonItem=[UIBarButtonItem barButtonItemWithIcon:@"navigationbar_pop" hilightIcon:@"navigationbar_pop_highlighted" target:self action:@selector(friendSearch)];
     //中间按钮
     ButtonWithRightIcon *middleBtn=[[ButtonWithRightIcon alloc] init];
-    [middleBtn setTitle:@"测试" forState:UIControlStateNormal];
+    [middleBtn setTitle:@"首页" forState:UIControlStateNormal];
     [middleBtn setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
-    middleBtn.frame=CGRectMake(0, 0, 80, 38);
     [middleBtn addTarget:self action:@selector(clickMiddleBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView=middleBtn;
+    self.navMiddleView=middleBtn;
     //设置tableview的背景颜色
     self.tableView.backgroundColor=MyColor(226,226,226);
     //设置tableview顶部和底部的预留间隙
 //    self.tableView.contentInset=UIEdgeInsetsMake(GlobalCellMargin, 0, GlobalCellMargin, 0);
     //设置tableview的分割线为空
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-//    [self setupStatusData];
+    //请求微博数据信息
     [self refreshStatusChange:self.refreshControl];
+    /**
+     *  请求用户数据信息
+     */
+//    [self setupUserData];
 }
 
 -(void) addRefreshControl{
@@ -119,6 +124,28 @@
         [self.refreshControl endRefreshing];
     }];
 }
+
+/**
+ *  请求用户数据信息
+ */
+-(void) setupUserData{
+    Account *account=[Util getAccount];
+    AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
+    requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
+    NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
+    parameters[@"source"]=AppKey;
+    parameters[@"access_token"]=account.access_token;
+    parameters[@"uid"]=@(account.uid);
+
+    [requestManager GET:UserDataURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        User *user=[User objectWithKeyValues:responseObject];
+        [self.navMiddleView setTitle:user.name forState:UIControlStateNormal];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
+}
+
 //显示刷新提示动画显示
 -(void) showRefreshTipView:(int) count{
     UIButton *tipView=[[UIButton alloc] init];
@@ -146,6 +173,9 @@
 
 -(void) friendSearch{
     NSLog(@"friendSearch");
+}
+-(void) clickMiddleBtn:(UIButton *) button{
+    
 }
 
 

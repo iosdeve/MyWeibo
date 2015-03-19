@@ -31,7 +31,7 @@
 -(void)setFrame:(CGRect)frame{
     CGSize size=[self.titleLabel.text sizeWithFont:self.titleLabel.font];
     CGFloat w=size.width+(self.currentImage.size.width+5)+5;
-    CGFloat h=frame.size.height;
+    CGFloat h=38;
     frame.size.width=w;
     frame.size.height=h;
     [super setFrame:frame];
@@ -46,6 +46,11 @@
     CGFloat w=self.currentImage.size.width+5;
     CGFloat h=contentRect.size.height;
     return CGRectMake(x, y, w, h);
+}
+
+-(void)setTitle:(NSString *)title forState:(UIControlState)state{
+    [super setTitle:title forState:state];
+    [self setFrame:CGRectZero];
 }
 
 /**
