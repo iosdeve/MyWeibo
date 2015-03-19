@@ -113,8 +113,34 @@
         
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
+        //显示刷新提示
+        [self showRefreshTipView:tempFrames.count];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.refreshControl endRefreshing];
+    }];
+}
+//显示刷新提示动画显示
+-(void) showRefreshTipView:(int) count{
+    UIButton *tipView=[[UIButton alloc] init];
+    [tipView setBackgroundImage:[UIImage imageResize:@"timeline_new_status_background"] forState:UIControlStateNormal];
+    [tipView setTitle:[NSString stringWithFormat:@"更新%d条微博",count] forState:UIControlStateNormal];
+    [tipView setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    tipView.titleLabel.font=[UIFont systemFontOfSize:13.5];
+    CGFloat h=34.0;
+    CGFloat x=0;
+    CGFloat y=CGRectGetMaxY(self.navigationController.navigationBar.frame)-h;
+    tipView.frame=CGRectMake(x, y, self.view.frame.size.width, h);
+    [self.navigationController.view insertSubview:tipView belowSubview:self.navigationController.navigationBar];
+    [UIView animateWithDuration:0.7 animations:^{
+        //向下动画显示
+        tipView.transform=CGAffineTransformMakeTranslation(0, h);
+    } completion:^(BOOL finished) {
+        //完成后恢复，移除提示view
+        [UIView animateWithDuration:0.7 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            tipView.transform=CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            [tipView removeFromSuperview];
+        }];
     }];
 }
 
@@ -122,13 +148,6 @@
     NSLog(@"friendSearch");
 }
 
--(void) clickMiddleBtn:(ButtonWithRightIcon *) btn{
-    if (btn.imageView.image==[UIImage imageWithName:@"navigationbar_arrow_down"]) {
-        [btn setImage:[UIImage imageWithName:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
-    }else{
-        [btn setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
-    }
-}
 
 - (void)didReceiveMemoryWarning
 {
