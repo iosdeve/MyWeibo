@@ -8,9 +8,11 @@
 
 #import "ComposeTextView.h"
 
-@interface ComposeTextView ()
-
+@interface ComposeTextView () <UITextViewDelegate>
+//提醒文字的view
 @property(nonatomic, weak) UILabel *placeHolderLabel;
+//微博配图的view
+@property(nonatomic, weak) UIImageView *pictureView;
 
 @end
 
@@ -30,8 +32,16 @@
         //插入到父控件到底部
         [self insertSubview:placeHolderLabel atIndex:0];
         self.placeHolderLabel=placeHolderLabel;
+        //设置textview默认可以滚动
+        self.alwaysBounceVertical=YES;
+        self.delegate=self;
         //添加textview文本改变到通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contentTextChanged) name:UITextViewTextDidChangeNotification object:self];
+        
+        UIImageView *pictView=[[UIImageView alloc] init];
+        pictView.frame=CGRectMake(10, 100, 50, 50);
+        [self addSubview:pictView];
+        self.pictureView=pictView;
     }
     return self;
 }
@@ -64,6 +74,22 @@
     }else{
         self.placeHolderLabel.hidden=NO;
     }
+}
+
+/**
+ *  当滚动textview的时候隐藏键盘
+ *
+ *  @param scrollView <#scrollView description#>
+ *  @param decelerate <#decelerate description#>
+ */
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    NSLog(@"scrollViewDidEndDragging");
+    [self resignFirstResponder];
+}
+//设置微博的图片
+-(void)setPicture:(UIImage *)picture{
+    _picture=picture;
+    self.pictureView.image=picture;
 }
 
 -(void)dealloc{

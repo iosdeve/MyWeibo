@@ -13,5 +13,7 @@
  *  提示文字
  */
 @property(nonatomic, copy) NSString *placeholder;
+//微博图片
+@property(nonatomic, copy) UIImage *picture;
 
 @end

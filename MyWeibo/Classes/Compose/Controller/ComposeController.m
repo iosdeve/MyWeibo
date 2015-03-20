@@ -14,7 +14,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "ComposeToolBar.h"
 
-@interface ComposeController ()
+@interface ComposeController () <ComposeToolBarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 //发微博输入框
 @property(nonatomic, weak) ComposeTextView *composeTextView;
 //发微博到工具栏
@@ -69,7 +69,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //添加并设置发微博输入框
     [self setupTextView];
+    //添加并设置输入tool bar
+    [self setupToolBar];
 }
 /**
  *  添加并设置发微博输入框
@@ -85,10 +88,18 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(composeTextChanged) name:UITextViewTextDidChangeNotification object:composeTextView];
 }
 
+//添加并设置输入tool bar
 -(void)setupToolBar{
     ComposeToolBar *toolBar=[[ComposeToolBar alloc] init];
+    CGFloat x=0;
+    CGFloat y=self.view.frame.size.height-44.0;
+    toolBar.frame=CGRectMake(x, y, self.view.frame.size.width, 44.0);
     [self.view addSubview:toolBar];
     self.toolBar=toolBar;
+    self.toolBar.delegate=self;
+    
+    //为键盘注册观察者，键盘的frame发生改变d时候接收通知，用于移动tool bar的位置
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardFrameDidChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
 //评论文本改变时调用此方法
@@ -100,11 +111,55 @@
         self.navigationItem.rightBarButtonItem.enabled=YES;
     }
 }
+//键盘的frame发生改变时候接收通知，用于移动tool bar的位置
+-(void) keyBoardFrameDidChange:(NSNotification *) notify{
+    //原来键盘的frame
+    CGRect beginFrame=[notify.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    //改变后的键盘frame
+    CGRect endFrame=[notify.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    //键盘显示过程中的动画时间
+    double duration=[notify.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    //如果键盘是从隐藏到显示
+    if (beginFrame.origin.y>endFrame.origin.y) {
+        [UIView animateWithDuration:duration animations:^{
+            self.toolBar.transform=CGAffineTransformMakeTranslation(0, endFrame.origin.y-beginFrame.origin.y);
+        }];
+    }else{
+        //从显示到隐藏
+        [UIView animateWithDuration:duration animations:^{
+            self.toolBar.transform=CGAffineTransformIdentity;
+        }];
+    }
+}
+
+-(void)composeToolBar:(ComposeToolBar *)toolBar clickButtonType:(ComposeToolBarButtonType)buttonType{
+    if (buttonType==ComposeToolBarButtonTypeAlbum) {
+        UIImagePickerController *pickerVC=[[UIImagePickerController alloc] init];
+        pickerVC.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+        pickerVC.delegate=self;
+        [self presentViewController:pickerVC animated:YES completion:nil];
+        
+    }else if(buttonType==ComposeToolBarButtonTypeCamera){
+        
+    }else if(buttonType==ComposeToolBarButtonTypeMetion){
+        
+    }else if(buttonType==ComposeToolBarButtonTypeTrend){
+        
+    }else if(buttonType==ComposeToolBarButtonTypeEmoticon){
+        
+    }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *image=info[UIImagePickerControllerOriginalImage];
+    self.composeTextView.picture=image;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     //界面显示的时候自动弹出键盘
-    [self.composeTextView becomeFirstResponder];
+//    [self.composeTextView becomeFirstResponder];
     //注意要在此处设置disable，否则预设到disable字体颜色不生效，don't know why
     self.navigationItem.rightBarButtonItem.enabled=NO;
 }
