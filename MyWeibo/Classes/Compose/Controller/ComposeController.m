@@ -74,6 +74,8 @@
 -(void) setupTextView{
     ComposeTextView *composeTextView=[[ComposeTextView alloc] init];
     composeTextView.frame=self.view.bounds;
+    composeTextView.placeholder=@"请在此处写你要发送的微博...";
+    composeTextView.font=[UIFont systemFontOfSize:14.0];
     [self.view addSubview:composeTextView];
     self.composeTextView=composeTextView;
     //为评论文本改变注册通知

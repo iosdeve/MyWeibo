@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ComposeTextView : UITextView
+/**
+ *  提示文字
+ */
+@property(nonatomic, copy) NSString *placeholder;
 
 @end
