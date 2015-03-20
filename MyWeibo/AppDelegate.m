@@ -12,6 +12,7 @@
 #import "LoginController.h"
 #import "Account.h"
 #import "Util.h"
+#import "SDWebImageManager.h"
 
 @implementation AppDelegate
 
@@ -58,6 +59,15 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+/**
+ *  当收到内存警告时，释放SDWebImage的内存
+ *
+ */
+-(void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
+    [[SDWebImageManager sharedManager] cancelAll];
+    [[SDWebImageManager sharedManager].imageCache clearMemory];
 }
 
 @end

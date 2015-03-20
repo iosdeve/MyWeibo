@@ -13,6 +13,7 @@
 #import "MeController.h"
 #import "CustomTabBar.h"
 #import "CustomNavigationController.h"
+#import "ComposeController.h"
 
 @interface CustomTabBarController () <CustomTabBarDelegate>
 @property(nonatomic ,weak) CustomTabBar *customTabbar;
@@ -103,6 +104,14 @@
 -(void)tabBar:(CustomTabBar *)tabBar didSelectFromIndex:(int)from toIndex:(int)to{
     //切换TabBarController的子控制器
     self.selectedIndex=to;
+}
+/**
+ *  点击加号按钮的代理方法
+ */
+-(void)tabBarPlusButtonClick:(CustomTabBar *)tabBar{
+    ComposeController *composeVC=[[ComposeController alloc] init];
+    CustomNavigationController *composeNav=[[CustomNavigationController alloc] initWithRootViewController:composeVC];
+    [self presentViewController:composeNav animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

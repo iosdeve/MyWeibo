@@ -23,6 +23,8 @@
 		560A175D1ABBB4DD00CAB84A /* new_feature_1-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560A175A1ABBB4DD00CAB84A /* new_feature_1-568h@2x.png */; };
 		560A175E1ABBB4DD00CAB84A /* new_feature_2-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560A175B1ABBB4DD00CAB84A /* new_feature_2-568h@2x.png */; };
 		560A175F1ABBB4DD00CAB84A /* new_feature_3-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560A175C1ABBB4DD00CAB84A /* new_feature_3-568h@2x.png */; };
+		560A17641ABBE65F00CAB84A /* ComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560A17631ABBE65F00CAB84A /* ComposeController.m */; };
+		560A17681ABBE87700CAB84A /* ComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560A17671ABBE87700CAB84A /* ComposeTextView.m */; };
 		560F6F401AAD732F002EDE1B /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F3F1AAD732F002EDE1B /* SearhField.m */; };
 		560F6F441AAD9F94002EDE1B /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F431AAD9F94002EDE1B /* StatusCell.m */; };
 		56333BE41AA978D1002B62AA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */; };
@@ -137,6 +139,10 @@
 		560A175A1ABBB4DD00CAB84A /* new_feature_1-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_feature_1-568h@2x.png"; sourceTree = "<group>"; };
 		560A175B1ABBB4DD00CAB84A /* new_feature_2-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_feature_2-568h@2x.png"; sourceTree = "<group>"; };
 		560A175C1ABBB4DD00CAB84A /* new_feature_3-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_feature_3-568h@2x.png"; sourceTree = "<group>"; };
+		560A17621ABBE65F00CAB84A /* ComposeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeController.h; sourceTree = "<group>"; };
+		560A17631ABBE65F00CAB84A /* ComposeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeController.m; sourceTree = "<group>"; };
+		560A17661ABBE87700CAB84A /* ComposeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeTextView.h; sourceTree = "<group>"; };
+		560A17671ABBE87700CAB84A /* ComposeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeTextView.m; sourceTree = "<group>"; };
 		560F6F3E1AAD732F002EDE1B /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearhField.h; sourceTree = "<group>"; };
 		560F6F3F1AAD732F002EDE1B /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearhField.m; sourceTree = "<group>"; };
 		560F6F421AAD9F94002EDE1B /* StatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCell.h; sourceTree = "<group>"; };
@@ -326,6 +332,33 @@
 			path = MJPhotoBrowser;
 			sourceTree = "<group>";
 		};
+		560A17601ABBE5FD00CAB84A /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				560A17651ABBE83F00CAB84A /* View */,
+				560A17611ABBE62100CAB84A /* Controller */,
+			);
+			path = Compose;
+			sourceTree = "<group>";
+		};
+		560A17611ABBE62100CAB84A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				560A17621ABBE65F00CAB84A /* ComposeController.h */,
+				560A17631ABBE65F00CAB84A /* ComposeController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		560A17651ABBE83F00CAB84A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				560A17661ABBE87700CAB84A /* ComposeTextView.h */,
+				560A17671ABBE87700CAB84A /* ComposeTextView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		56333BDE1AA978D1002B62AA /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +527,7 @@
 		56A758DA1AA5607500EB96AD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				560A17601ABBE5FD00CAB84A /* Compose */,
 				56C9BB621AA88D19003DDE13 /* OAuth */,
 				56A758DB1AA5607500EB96AD /* Discover */,
 				56A758E11AA5607500EB96AD /* Home */,
@@ -924,6 +958,7 @@
 				56333C391AA9A0A6002B62AA /* SDWebImageManager.m in Sources */,
 				56C9BB9B1AA8A04C003DDE13 /* AFHTTPRequestOperation.m in Sources */,
 				56C2CB461AA74AEE0009480B /* ButtonWithRightIcon.m in Sources */,
+				560A17641ABBE65F00CAB84A /* ComposeController.m in Sources */,
 				56A758FF1AA5607500EB96AD /* HomeController.m in Sources */,
 				566331C61AA5EA9800D43BF9 /* BadgeButton.m in Sources */,
 				56333C301AA9A0A6002B62AA /* MJRefreshFooterView.m in Sources */,
@@ -986,6 +1021,7 @@
 				56333C381AA9A0A6002B62AA /* SDWebImageDownloaderOperation.m in Sources */,
 				560831531ABA5F9C00C14321 /* MJPhotoBrowser.m in Sources */,
 				56A759021AA5607500EB96AD /* MessageController.m in Sources */,
+				560A17681ABBE87700CAB84A /* ComposeTextView.m in Sources */,
 				560831561ABA5F9C00C14321 /* MJPhotoToolbar.m in Sources */,
 				56333C371AA9A0A6002B62AA /* SDWebImageDownloader.m in Sources */,
 				56333C241AA9A0A6002B62AA /* MJArgument.m in Sources */,

@@ -19,6 +19,13 @@
  *  @param to     选中按钮的index
  */
 -(void) tabBar:(CustomTabBar *) tabBar didSelectFromIndex:(int) from toIndex:(int) to;
+/**
+ *  点击中间加号按钮的代理方法
+ *
+ *  @param tabBar
+ */
+-(void) tabBarPlusButtonClick:(CustomTabBar *) tabBar;
+
 @end
 
 @interface CustomTabBar : UIView

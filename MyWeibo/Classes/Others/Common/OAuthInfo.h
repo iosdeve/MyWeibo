@@ -16,6 +16,7 @@
 #define AccessTokenURL @"https://api.weibo.com/oauth2/access_token"
 //获取所有好友微博
 #define StatusDataURL @"https://api.weibo.com/2/statuses/friends_timeline.json"
-
 //获取用户信息
 #define UserDataURL @"https://api.weibo.com/2/users/show.json"
+//发布新微博
+#define SubmitStatusURL @"https://api.weibo.com/2/statuses/update.json"

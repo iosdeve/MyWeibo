@@ -37,6 +37,10 @@
     dictItemTitle[UITextAttributeTextShadowOffset]=[NSValue valueWithUIOffset:UIOffsetZero];
     [barItem setTitleTextAttributes:dictItemTitle forState:UIControlStateNormal];
     [barItem setTitleTextAttributes:dictItemTitle forState:UIControlStateHighlighted];
+    //设置barbuttonitem disabled的时候字体颜色和字体大小
+    NSMutableDictionary *dictDisableItemTitle=[NSMutableDictionary dictionary];
+    dictDisableItemTitle[UITextAttributeTextColor]=[UIColor lightGrayColor];
+    [barItem setTitleTextAttributes:dictDisableItemTitle forState:UIControlStateDisabled];
     //设置NavigationBar的文字主题
     NSMutableDictionary *dictBarTitle=[NSMutableDictionary dictionary];
     dictBarTitle[UITextAttributeFont]=[UIFont boldSystemFontOfSize:19];

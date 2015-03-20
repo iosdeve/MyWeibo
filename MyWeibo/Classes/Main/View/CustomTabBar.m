@@ -45,6 +45,8 @@
         [addBtn setImage:[UIImage imageWithName:@"tabbar_compose_icon_add_highlighted"] forState:UIControlStateHighlighted];
         //设置按钮的大小和背景图片宽高一致
         addBtn.bounds=CGRectMake(0, 0, addBtn.currentBackgroundImage.size.width, addBtn.currentBackgroundImage.size.height);
+        //为加号按钮添加点击事件
+        [addBtn addTarget:self action:@selector(plusButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:addBtn];
         self.addBtn=addBtn;
     }
@@ -108,6 +110,14 @@
     self.selectedButton.selected=NO;
     button.selected=YES;
     self.selectedButton=button;
+}
+/**
+ *  处理加号按钮的点击
+ */
+-(void) plusButtonClick{
+    if ([self.delegate respondsToSelector:@selector(tabBarPlusButtonClick:)]) {
+        [self.delegate tabBarPlusButtonClick:self];
+    }
 }
 
 @end
