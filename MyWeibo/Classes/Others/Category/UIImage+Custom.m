@@ -18,6 +18,17 @@
  *  @return 返回UIImage
  */
 +(UIImage *)imageWithName:(NSString *)name{
+    if (is4Inch) {
+        //如果时4英寸，并且是新特性的图片
+        NSRange range=[name rangeOfString:@"new_feature"];
+        if (range.length>0) {
+            NSString *inch4ImageName=[name stringByAppendingString:@"-568h"];
+            UIImage *inch4Image=[UIImage imageNamed:inch4ImageName];
+            if (inch4Image) {
+                return inch4Image;
+            }
+        }
+    }
     if (iOS7) {
         //获取文件扩展名，不含点
         NSString *extension=[name pathExtension];

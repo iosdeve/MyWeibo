@@ -18,6 +18,8 @@
 @property(nonatomic, assign) long long uid;
 //保存时间
 @property(nonatomic, strong) NSDate *saveTime;
+//用户昵称
+@property(nonatomic, copy) NSString *name;
 
 /**
  *  从字典转换为对象KVC

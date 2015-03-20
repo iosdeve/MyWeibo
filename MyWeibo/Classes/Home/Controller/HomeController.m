@@ -20,15 +20,21 @@
 #import "StatusFrame.h"
 #import "StatusCell.h"
 #import "StatusPhoto.h"
+#import "MJRefresh.h"
 
-@interface HomeController ()
+@interface HomeController () <MJRefreshBaseViewDelegate>
 //微博数据模型
 @property(nonatomic, strong) NSArray *status;
 //微博数据转换成的Frame模型
 @property(nonatomic, strong) NSMutableArray *statusFrames;
-//刷新控件
-@property(nonatomic, weak) UIRefreshControl *refreshControl;
+//导航栏中间的按钮
 @property(nonatomic,weak) ButtonWithRightIcon *navMiddleView;
+//归档用户帐户
+@property(nonatomic, strong) Account *account;
+//上拉刷新view
+@property(nonatomic, weak) MJRefreshHeaderView *refreshHeader;
+//下拉刷新view
+@property(nonatomic, weak) MJRefreshFooterView *refreshFooter;
 
 @end
 
@@ -40,6 +46,7 @@
     if (self) {
         //初始化微博数据转换成的Frame模型
         self.statusFrames=[NSMutableArray array];
+        self.account=[Util getAccount];
     }
     return self;
 }
@@ -48,14 +55,23 @@
 {
     [super viewDidLoad];
     //添加刷新控件
-    [self addRefreshControl];
+    [self addRefreshView];
     //左边朋友
     self.navigationItem.leftBarButtonItem=[UIBarButtonItem barButtonItemWithIcon:@"navigationbar_friendsearch" hilightIcon:@"navigationbar_friendsearch_highlighted" target:self action:@selector(friendSearch)];
     //右边的扫一扫
     self.navigationItem.rightBarButtonItem=[UIBarButtonItem barButtonItemWithIcon:@"navigationbar_pop" hilightIcon:@"navigationbar_pop_highlighted" target:self action:@selector(friendSearch)];
     //中间按钮
     ButtonWithRightIcon *middleBtn=[[ButtonWithRightIcon alloc] init];
-    [middleBtn setTitle:@"首页" forState:UIControlStateNormal];
+    //如过归档的account有昵称，直接设置，没有通过网络请求
+    if (self.account.name) {
+        [middleBtn setTitle:self.account.name forState:UIControlStateNormal];
+    }else {
+        [middleBtn setTitle:@"首页" forState:UIControlStateNormal];
+        /**
+         *  请求用户数据信息
+         */
+        [self setupUserData];
+    }
     [middleBtn setImage:[UIImage imageWithName:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
     [middleBtn addTarget:self action:@selector(clickMiddleBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView=middleBtn;
@@ -63,31 +79,37 @@
     //设置tableview的背景颜色
     self.tableView.backgroundColor=MyColor(226,226,226);
     //设置tableview顶部和底部的预留间隙
-//    self.tableView.contentInset=UIEdgeInsetsMake(GlobalCellMargin, 0, GlobalCellMargin, 0);
+    self.tableView.contentInset=UIEdgeInsetsMake(GlobalCellMargin, 0, GlobalCellMargin, 0);
     //设置tableview的分割线为空
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    //请求微博数据信息
-    [self refreshStatusChange:self.refreshControl];
-    /**
-     *  请求用户数据信息
-     */
-//    [self setupUserData];
 }
 
--(void) addRefreshControl{
-    UIRefreshControl *refreshControl=[[UIRefreshControl alloc] init];
-    [self.tableView addSubview:refreshControl];
-    [refreshControl addTarget:self action:@selector(refreshStatusChange:) forControlEvents:UIControlEventValueChanged];
-    [refreshControl beginRefreshing];
-    self.refreshControl=refreshControl;
+//添加上拉和下拉刷新view
+-(void) addRefreshView{
+    MJRefreshFooterView *refreshFooter=[[MJRefreshFooterView alloc] init];
+    refreshFooter.scrollView=self.tableView;
+    refreshFooter.delegate=self;
+    self.refreshFooter=refreshFooter;
+    
+    MJRefreshHeaderView *refreshHeader=[[MJRefreshHeaderView alloc] init];
+    refreshHeader.scrollView=self.tableView;
+    refreshHeader.delegate=self;
+    [refreshHeader beginRefreshing];
+    self.refreshHeader=refreshHeader;
 }
 
-//
--(void) refreshStatusChange:(UIRefreshControl *) refresh{
-    [self setupStatusData];
+//开始刷新处理方法
+-(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
+    if ([refreshView isKindOfClass:[MJRefreshFooterView class]]) {
+        [self loadMoreStatusData];
+    }else {
+        [self loadNewStatusData];
+    }
 }
-
--(void) setupStatusData{
+/**
+ *  下拉刷新数据
+ */
+-(void) loadNewStatusData{
     Account *account=[Util getAccount];
     AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
     requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
@@ -117,12 +139,50 @@
         }
         
         [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
+        [self.refreshHeader endRefreshing];
         //显示刷新提示
         [self showRefreshTipView:tempFrames.count];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.refreshControl endRefreshing];
+        [self.refreshHeader endRefreshing];
     }];
+    
+}
+/**
+ *  上啦加载更多数据
+ */
+-(void) loadMoreStatusData{
+    Account *account=[Util getAccount];
+    AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
+    requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
+    NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
+    parameters[@"source"]=AppKey;
+    parameters[@"access_token"]=account.access_token;
+    if (self.statusFrames.count) {
+        StatusFrame *sf=[self.statusFrames lastObject];
+        parameters[@"max_id"]=@([sf.status.idstr longLongValue]-1);
+    }
+    [requestManager GET:StatusDataURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *jsonArray=responseObject[@"statuses"];
+        //json对象转换成微博数据模型
+        NSArray *statusData=[Status objectArrayWithKeyValuesArray:jsonArray];
+        //根据微博数据模型构造微博的Frame模型
+        NSMutableArray *tempFrames=[NSMutableArray array];
+        for (Status *st in statusData) {
+            StatusFrame *statusFrame=[[StatusFrame alloc] init];
+            statusFrame.status=st;
+            [tempFrames addObject:statusFrame];
+        }
+        
+        [self.statusFrames addObjectsFromArray:tempFrames];
+        
+        [self.tableView reloadData];
+        [self.refreshFooter endRefreshing];
+        //显示刷新提示
+        [self showRefreshTipView:tempFrames.count];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.refreshFooter endRefreshing];
+    }];
+    
 }
 
 /**
@@ -136,14 +196,18 @@
     parameters[@"source"]=AppKey;
     parameters[@"access_token"]=account.access_token;
     parameters[@"uid"]=@(account.uid);
-
+    
     [requestManager GET:UserDataURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         User *user=[User objectWithKeyValues:responseObject];
+        //设置用户昵称
+        account.name=user.name;
+        //归档Account对象
+        [Util saveAccount:account];
         [self.navMiddleView setTitle:user.name forState:UIControlStateNormal];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
-
+    
 }
 
 //显示刷新提示动画显示
@@ -209,78 +273,8 @@
     return sf.cellHight;
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // 1.创建cell
-//    static NSString *ID = @"cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-//    }
-//    
-//    // 2.设置cell的数据
-//    // 微博的文字(内容)
-//    Status *status = self.status[indexPath.row];
-//    cell.textLabel.text = status.text;
-//    
-//    // 微博作者的昵称
-//    User *user = status.user;
-//    cell.detailTextLabel.text = user.name;
-//    
-//    // 微博作者的头像
-//    [cell.imageView setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageWithName:@"tabbar_compose_button"]];
-//    
-//    return cell;
-//}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void)dealloc{
+    [self.refreshFooter free];
+    [self.refreshHeader free];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

@@ -16,6 +16,7 @@
     [aCoder encodeInt64:self.expires_in forKey:@"expires_in"];
     [aCoder encodeInt64:self.remind_in forKey:@"remind_in"];
     [aCoder encodeObject:self.saveTime forKey:@"saveTime"];
+    [aCoder encodeObject:self.name forKey:@"name"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -26,6 +27,7 @@
         self.expires_in=[aDecoder decodeInt64ForKey:@"expires_in"];
         self.remind_in=[aDecoder decodeInt64ForKey:@"remind_in"];
         self.saveTime=[aDecoder decodeObjectForKey:@"saveTime"];
+        self.name=[aDecoder decodeObjectForKey:@"name"];
     }
     return self;
 }
