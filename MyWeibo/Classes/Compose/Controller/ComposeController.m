@@ -12,10 +12,13 @@
 #import "Util.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
+#import "ComposeToolBar.h"
 
 @interface ComposeController ()
 //发微博输入框
 @property(nonatomic, weak) ComposeTextView *composeTextView;
+//发微博到工具栏
+@property(nonatomic, weak) ComposeToolBar *toolBar;
 
 @end
 
@@ -81,6 +84,13 @@
     //为评论文本改变注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(composeTextChanged) name:UITextViewTextDidChangeNotification object:composeTextView];
 }
+
+-(void)setupToolBar{
+    ComposeToolBar *toolBar=[[ComposeToolBar alloc] init];
+    [self.view addSubview:toolBar];
+    self.toolBar=toolBar;
+}
+
 //评论文本改变时调用此方法
 -(void) composeTextChanged{
     //当没有输入任何文字时，右上角当发表按钮设置为不可用

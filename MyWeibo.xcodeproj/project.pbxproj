@@ -25,6 +25,7 @@
 		560A175F1ABBB4DD00CAB84A /* new_feature_3-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560A175C1ABBB4DD00CAB84A /* new_feature_3-568h@2x.png */; };
 		560A17641ABBE65F00CAB84A /* ComposeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560A17631ABBE65F00CAB84A /* ComposeController.m */; };
 		560A17681ABBE87700CAB84A /* ComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560A17671ABBE87700CAB84A /* ComposeTextView.m */; };
+		560A176B1ABC186500CAB84A /* ComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 560A176A1ABC186500CAB84A /* ComposeToolBar.m */; };
 		560F6F401AAD732F002EDE1B /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F3F1AAD732F002EDE1B /* SearhField.m */; };
 		560F6F441AAD9F94002EDE1B /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F431AAD9F94002EDE1B /* StatusCell.m */; };
 		56333BE41AA978D1002B62AA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */; };
@@ -143,6 +144,8 @@
 		560A17631ABBE65F00CAB84A /* ComposeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeController.m; sourceTree = "<group>"; };
 		560A17661ABBE87700CAB84A /* ComposeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeTextView.h; sourceTree = "<group>"; };
 		560A17671ABBE87700CAB84A /* ComposeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeTextView.m; sourceTree = "<group>"; };
+		560A17691ABC186500CAB84A /* ComposeToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeToolBar.h; sourceTree = "<group>"; };
+		560A176A1ABC186500CAB84A /* ComposeToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeToolBar.m; sourceTree = "<group>"; };
 		560F6F3E1AAD732F002EDE1B /* SearhField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearhField.h; sourceTree = "<group>"; };
 		560F6F3F1AAD732F002EDE1B /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearhField.m; sourceTree = "<group>"; };
 		560F6F421AAD9F94002EDE1B /* StatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCell.h; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 			children = (
 				560A17661ABBE87700CAB84A /* ComposeTextView.h */,
 				560A17671ABBE87700CAB84A /* ComposeTextView.m */,
+				560A17691ABC186500CAB84A /* ComposeToolBar.h */,
+				560A176A1ABC186500CAB84A /* ComposeToolBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -974,6 +979,7 @@
 				56A759051AA571FF00EB96AD /* UIImage+Custom.m in Sources */,
 				56C9BB9D1AA8A04C003DDE13 /* AFHTTPSessionManager.m in Sources */,
 				56333C421AA9A172002B62AA /* Status.m in Sources */,
+				560A176B1ABC186500CAB84A /* ComposeToolBar.m in Sources */,
 				56333C281AA9A0A6002B62AA /* MJType.m in Sources */,
 				56A758FE1AA5607500EB96AD /* DiscoverController.m in Sources */,
 				5608313B1AB9742B00C14321 /* StatusPictureView.m in Sources */,
