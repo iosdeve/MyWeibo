@@ -7,12 +7,13 @@
 //  发表评论的textview
 
 #import "ComposeTextView.h"
+#import "ComposePhotosView.h"
 
 @interface ComposeTextView () <UITextViewDelegate>
 //提醒文字的view
 @property(nonatomic, weak) UILabel *placeHolderLabel;
 //微博配图的view
-@property(nonatomic, weak) UIImageView *pictureView;
+@property(nonatomic, weak) ComposePhotosView *pictureView;
 
 @end
 
@@ -38,8 +39,7 @@
         //添加textview文本改变到通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contentTextChanged) name:UITextViewTextDidChangeNotification object:self];
         
-        UIImageView *pictView=[[UIImageView alloc] init];
-        pictView.frame=CGRectMake(10, 100, 50, 50);
+        ComposePhotosView *pictView=[[ComposePhotosView alloc] init];
         [self addSubview:pictView];
         self.pictureView=pictView;
     }
@@ -66,6 +66,7 @@
     //设置提示控件到颜色
     self.placeHolderLabel.font=self.font;
     self.placeHolderLabel.frame=CGRectMake(x, y, labelSize.width, labelSize.height);
+    self.pictureView.frame=CGRectMake(10, 100, self.frame.size.width-20, self.frame.size.height-100);
 }
 //接收textview文本改变到通知
 -(void) contentTextChanged{
@@ -89,7 +90,12 @@
 //设置微博的图片
 -(void)setPicture:(UIImage *)picture{
     _picture=picture;
-    self.pictureView.image=picture;
+    [self.pictureView addImage:picture];
+    NSLog(@"%@",NSStringFromCGRect(self.pictureView.frame));
+}
+
+-(NSArray *) getPhotos{
+    return [self.pictureView getPhotos];
 }
 
 -(void)dealloc{

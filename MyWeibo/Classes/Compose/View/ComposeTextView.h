@@ -16,4 +16,6 @@
 //微博图片
 @property(nonatomic, copy) UIImage *picture;
 
+-(NSArray *) getPhotos;
+
 @end

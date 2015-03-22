@@ -20,3 +20,4 @@
 #define UserDataURL @"https://api.weibo.com/2/users/show.json"
 //发布新微博
 #define SubmitStatusURL @"https://api.weibo.com/2/statuses/update.json"
+#define SubmitStatusPhotoURL @"https://upload.api.weibo.com/2/statuses/upload.json"

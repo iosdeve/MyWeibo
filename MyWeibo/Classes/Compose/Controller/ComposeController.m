@@ -42,7 +42,12 @@
 }
 //提交微博内容到服务器
 -(void) submit{
-    [self submitStatusToServer];
+    //如果包含图片
+    if ([[self.composeTextView getPhotos] count]>0) {
+        [self submitStatusWithPhotoToServer];
+    }else{
+        [self submitStatusToServer];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -63,6 +68,32 @@
         [MBProgressHUD showError:@"发送失败"];
     }];
     
+}
+
+/**
+ *  提交带图片的微博内容到服务器
+ */
+-(void) submitStatusWithPhotoToServer{
+    Account *account=[Util getAccount];
+    AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
+    requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
+    NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
+    parameters[@"source"]=AppKey;
+    parameters[@"access_token"]=account.access_token;
+    parameters[@"status"]=self.composeTextView.text;
+    
+    [requestManager POST:SubmitStatusPhotoURL parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSArray *images=[self.composeTextView getPhotos];
+        for (int i=0; i<images.count; i++) {
+            UIImage *image=images[i];
+            [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.5) name:@"pic" fileName:[NSString stringWithFormat:@"%d.jpg",i] mimeType:@"image/jpeg"];
+        }
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [MBProgressHUD showSuccess:@"发送成功"];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [MBProgressHUD showError:@"发送失败"];
+    }];
 }
 
 

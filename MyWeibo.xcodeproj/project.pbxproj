@@ -88,6 +88,7 @@
 		56A759241AA96D2600EB96AD /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A759231AA96D2600EB96AD /* Util.m */; };
 		56BF851B1AB5B721003D7308 /* StatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BF851A1AB5B721003D7308 /* StatusFrame.m */; };
 		56C2CB461AA74AEE0009480B /* ButtonWithRightIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */; };
+		56C576241ABE44F100AE8949 /* ComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C576231ABE44F100AE8949 /* ComposePhotosView.m */; };
 		56C9BB661AA88DAF003DDE13 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9BB651AA88DAF003DDE13 /* LoginController.m */; };
 		56C9BB9B1AA8A04C003DDE13 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9BB891AA8A04C003DDE13 /* AFHTTPRequestOperation.m */; };
 		56C9BB9C1AA8A04C003DDE13 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9BB8B1AA8A04C003DDE13 /* AFHTTPRequestOperationManager.m */; };
@@ -264,6 +265,8 @@
 		56BF851A1AB5B721003D7308 /* StatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusFrame.m; sourceTree = "<group>"; };
 		56C2CB441AA74AEE0009480B /* ButtonWithRightIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonWithRightIcon.h; sourceTree = "<group>"; };
 		56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonWithRightIcon.m; sourceTree = "<group>"; };
+		56C576221ABE44F100AE8949 /* ComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposePhotosView.h; sourceTree = "<group>"; };
+		56C576231ABE44F100AE8949 /* ComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposePhotosView.m; sourceTree = "<group>"; };
 		56C9BB641AA88DAF003DDE13 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		56C9BB651AA88DAF003DDE13 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		56C9BB881AA8A04C003DDE13 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				560A17671ABBE87700CAB84A /* ComposeTextView.m */,
 				560A17691ABC186500CAB84A /* ComposeToolBar.h */,
 				560A176A1ABC186500CAB84A /* ComposeToolBar.m */,
+				56C576221ABE44F100AE8949 /* ComposePhotosView.h */,
+				56C576231ABE44F100AE8949 /* ComposePhotosView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -974,6 +979,7 @@
 				56C9BB661AA88DAF003DDE13 /* LoginController.m in Sources */,
 				560831321AB81AF400C14321 /* StatusToolBar.m in Sources */,
 				56333BE61AA978D1002B62AA /* MBProgressHUD.m in Sources */,
+				56C576241ABE44F100AE8949 /* ComposePhotosView.m in Sources */,
 				56333C451AA9A182002B62AA /* User.m in Sources */,
 				560831541ABA5F9C00C14321 /* MJPhotoLoadingView.m in Sources */,
 				56A759051AA571FF00EB96AD /* UIImage+Custom.m in Sources */,
