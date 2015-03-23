@@ -10,4 +10,9 @@
 
 @interface HomeController : UITableViewController
 
+/**
+ *  开始刷新，用于外部调用
+ */
+-(void) beginRefreshStatus;
+
 @end

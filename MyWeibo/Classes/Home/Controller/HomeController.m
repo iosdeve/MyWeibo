@@ -97,6 +97,14 @@
     [refreshHeader beginRefreshing];
     self.refreshHeader=refreshHeader;
 }
+/**
+ *  开始刷新，用于外部调用
+ */
+-(void) beginRefreshStatus{
+    //如果是首页清空tabItem上的徽标
+    self.tabBarItem.badgeValue=0;
+    [self.refreshHeader beginRefreshing];
+}
 
 //开始刷新处理方法
 -(void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{

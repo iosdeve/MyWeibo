@@ -14,9 +14,23 @@
 #import "CustomTabBar.h"
 #import "CustomNavigationController.h"
 #import "ComposeController.h"
+#import "HttpTool.h"
+#import "Util.h"
+#import "Account.h"
+#import "UnreadMessageCount.h"
+#import "MJExtension.h"
 
 @interface CustomTabBarController () <CustomTabBarDelegate>
 @property(nonatomic ,weak) CustomTabBar *customTabbar;
+//主页控制器
+@property(nonatomic, weak) HomeController *home;
+//消息控制器
+@property(nonatomic, weak) MessageController *message;
+//发现控制器
+@property(nonatomic, weak) DiscoverController *discover;
+//我控制器
+@property(nonatomic, weak) MeController *me;
+
 @end
 
 @implementation CustomTabBarController
@@ -30,15 +44,25 @@
     [self setupCustomTabBar];
     
     HomeController *home=[[HomeController alloc] init];
-    home.tabBarItem.badgeValue=@"1399";
+//    home.tabBarItem.badgeValue=@"1";
     [self setupChildrenViewController:home title:@"首页" imageName:@"tabbar_home.png" selectedImageName:@"tabbar_home_selected.png"];
     MessageController *message=[[MessageController alloc] init];
-    message.tabBarItem.badgeValue=@"5";
+    message.tabBarItem.badgeValue=@"0";
     [self setupChildrenViewController:message title:@"消息" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected.png"];
     DiscoverController *discover=[[DiscoverController alloc] init];
     [self setupChildrenViewController:discover title:@"发现" imageName:@"tabbar_discover" selectedImageName:@"tabbar_discover_selected.png"];
     MeController *me=[[MeController alloc] init];
     [self setupChildrenViewController:me title:@"我" imageName:@"tabbar_profile.png" selectedImageName:@"tabbar_profile_selected.png"];
+    self.home=home;
+    self.message=message;
+    self.discover=discover;
+    self.me=me;
+    //从服务器循环获取未读消息的数量
+    NSTimer *timer=[NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(fetchUnreadMessageCount) userInfo:nil repeats:YES];
+    //将循环获取消息数量放到后台线程的子线程取执行，默认是放到主线线程取调用，如果不这么做的化，当主线忙的时候，定时器就不会执行，
+    //NSRunLoopCommonModes 是子线程
+    //NSDefaultRunLoopMode 是主线程
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 /**
@@ -82,7 +106,6 @@
     [self addChildViewController:nav];
     
     [self.customTabbar addBarButtionWithItem:controller.tabBarItem];
-
 }
 
 /**
@@ -104,6 +127,10 @@
 -(void)tabBar:(CustomTabBar *)tabBar didSelectFromIndex:(int)from toIndex:(int)to{
     //切换TabBarController的子控制器
     self.selectedIndex=to;
+    if (to==0) {
+        //如果是首页清空tabItem上的徽标，自动下拉刷新微博
+        [self.home beginRefreshStatus];
+    }
 }
 /**
  *  点击加号按钮的代理方法
@@ -117,6 +144,28 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+/**
+ *从服务器获取未读消息的数量
+ */
+-(void) fetchUnreadMessageCount{
+    Account *account=[Util getAccount];
+    NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
+    parameters[@"source"]=AppKey;
+    parameters[@"access_token"]=account.access_token;
+    parameters[@"uid"]=@(account.uid);
+    
+    [HttpTool getURL:UnreadMessageCountURL parameter:parameters success:^(id responseObject) {
+        //获取未读消息数量，并设置徽标
+        UnreadMessageCount *unreadCount=[UnreadMessageCount objectWithKeyValues:responseObject];
+        self.home.tabBarItem.badgeValue=[NSString stringWithFormat:@"%d",unreadCount.status];
+        self.message.tabBarItem.badgeValue=[NSString stringWithFormat:@"%d",unreadCount.messageCount];
+        self.me.tabBarItem.badgeValue=[NSString stringWithFormat:@"%d",unreadCount.follower];
+        NSLog(@"%@",unreadCount);
+    } faile:^(NSError *error) {
+        
+    }];
 }
 
 @end

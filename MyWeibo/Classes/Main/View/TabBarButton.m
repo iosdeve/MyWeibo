@@ -71,8 +71,13 @@
     [self setTitle:self.item.title forState:UIControlStateSelected];
     [self setImage:self.item.image forState:UIControlStateNormal];
     [self setImage:self.item.selectedImage forState:UIControlStateSelected];
-    //设置徽标的直
-    self.badgeBtn.badgeValue=self.item.badgeValue;
+    //设置徽标的直,如果徽标数字大于0才设置
+    if ([self.item.badgeValue intValue]>0) {
+        self.badgeBtn.badgeValue=self.item.badgeValue;
+    }else{
+        self.badgeBtn.badgeValue=@"";
+    }
+    
 }
 
 /**

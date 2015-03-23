@@ -90,6 +90,7 @@
 		56BF851B1AB5B721003D7308 /* StatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BF851A1AB5B721003D7308 /* StatusFrame.m */; };
 		56C2CB461AA74AEE0009480B /* ButtonWithRightIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */; };
 		56C576241ABE44F100AE8949 /* ComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C576231ABE44F100AE8949 /* ComposePhotosView.m */; };
+		56C8C8A91AC037E7002200F2 /* UnreadMessageCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C8C8A81AC037E7002200F2 /* UnreadMessageCount.m */; };
 		56C9BB661AA88DAF003DDE13 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9BB651AA88DAF003DDE13 /* LoginController.m */; };
 		56C9BB9B1AA8A04C003DDE13 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9BB891AA8A04C003DDE13 /* AFHTTPRequestOperation.m */; };
 		56C9BB9C1AA8A04C003DDE13 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9BB8B1AA8A04C003DDE13 /* AFHTTPRequestOperationManager.m */; };
@@ -270,6 +271,8 @@
 		56C2CB451AA74AEE0009480B /* ButtonWithRightIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonWithRightIcon.m; sourceTree = "<group>"; };
 		56C576221ABE44F100AE8949 /* ComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposePhotosView.h; sourceTree = "<group>"; };
 		56C576231ABE44F100AE8949 /* ComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposePhotosView.m; sourceTree = "<group>"; };
+		56C8C8A71AC037E7002200F2 /* UnreadMessageCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnreadMessageCount.h; sourceTree = SOURCE_ROOT; };
+		56C8C8A81AC037E7002200F2 /* UnreadMessageCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnreadMessageCount.m; sourceTree = SOURCE_ROOT; };
 		56C9BB641AA88DAF003DDE13 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		56C9BB651AA88DAF003DDE13 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		56C9BB881AA8A04C003DDE13 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -662,6 +665,8 @@
 		56A758EB1AA5607500EB96AD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				56C8C8A71AC037E7002200F2 /* UnreadMessageCount.h */,
+				56C8C8A81AC037E7002200F2 /* UnreadMessageCount.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -980,6 +985,7 @@
 				56333C301AA9A0A6002B62AA /* MJRefreshFooterView.m in Sources */,
 				560F6F441AAD9F94002EDE1B /* StatusCell.m in Sources */,
 				56333C271AA9A0A6002B62AA /* MJMethod.m in Sources */,
+				56C8C8A91AC037E7002200F2 /* UnreadMessageCount.m in Sources */,
 				56333C3E1AA9A0A6002B62AA /* UIImage+WebP.m in Sources */,
 				56A759011AA5607500EB96AD /* MeController.m in Sources */,
 				56C9BB661AA88DAF003DDE13 /* LoginController.m in Sources */,
