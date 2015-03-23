@@ -9,7 +9,6 @@
 #import "HomeController.h"
 #import "UIBarButtonItem+Custom.h"
 #import "ButtonWithRightIcon.h"
-#import "AFNetworking.h"
 #import "OAuthInfo.h"
 #import "Util.h"
 #import "Account.h"
@@ -21,6 +20,7 @@
 #import "StatusCell.h"
 #import "StatusPhoto.h"
 #import "MJRefresh.h"
+#import "HttpTool.h"
 
 @interface HomeController () <MJRefreshBaseViewDelegate>
 //微博数据模型
@@ -111,8 +111,6 @@
  */
 -(void) loadNewStatusData{
     Account *account=[Util getAccount];
-    AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
-    requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
     NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
     parameters[@"source"]=AppKey;
     parameters[@"access_token"]=account.access_token;
@@ -120,7 +118,7 @@
         StatusFrame *sf=self.statusFrames[0];
         parameters[@"since_id"]=sf.status.idstr;
     }
-    [requestManager GET:StatusDataURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [HttpTool getURL:StatusDataURL parameter:parameters success:^(id responseObject) {
         NSArray *jsonArray=responseObject[@"statuses"];
         //json对象转换成微博数据模型
         NSArray *statusData=[Status objectArrayWithKeyValuesArray:jsonArray];
@@ -142,18 +140,15 @@
         [self.refreshHeader endRefreshing];
         //显示刷新提示
         [self showRefreshTipView:tempFrames.count];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } faile:^(NSError *error) {
         [self.refreshHeader endRefreshing];
     }];
-    
 }
 /**
  *  上啦加载更多数据
  */
 -(void) loadMoreStatusData{
     Account *account=[Util getAccount];
-    AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
-    requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
     NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
     parameters[@"source"]=AppKey;
     parameters[@"access_token"]=account.access_token;
@@ -161,7 +156,8 @@
         StatusFrame *sf=[self.statusFrames lastObject];
         parameters[@"max_id"]=@([sf.status.idstr longLongValue]-1);
     }
-    [requestManager GET:StatusDataURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    [HttpTool getURL:StatusDataURL parameter:parameters success:^(id responseObject) {
         NSArray *jsonArray=responseObject[@"statuses"];
         //json对象转换成微博数据模型
         NSArray *statusData=[Status objectArrayWithKeyValuesArray:jsonArray];
@@ -179,7 +175,7 @@
         [self.refreshFooter endRefreshing];
         //显示刷新提示
         [self showRefreshTipView:tempFrames.count];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } faile:^(NSError *error) {
         [self.refreshFooter endRefreshing];
     }];
     
@@ -190,21 +186,18 @@
  */
 -(void) setupUserData{
     Account *account=[Util getAccount];
-    AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
-    requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
     NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
     parameters[@"source"]=AppKey;
     parameters[@"access_token"]=account.access_token;
     parameters[@"uid"]=@(account.uid);
-    
-    [requestManager GET:UserDataURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [HttpTool getURL:UserDataURL parameter:parameters success:^(id responseObject) {
         User *user=[User objectWithKeyValues:responseObject];
         //设置用户昵称
         account.name=user.name;
         //归档Account对象
         [Util saveAccount:account];
         [self.navMiddleView setTitle:user.name forState:UIControlStateNormal];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } faile:^(NSError *error) {
         
     }];
     

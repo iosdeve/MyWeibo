@@ -28,6 +28,7 @@
 		560A176B1ABC186500CAB84A /* ComposeToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 560A176A1ABC186500CAB84A /* ComposeToolBar.m */; };
 		560F6F401AAD732F002EDE1B /* SearhField.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F3F1AAD732F002EDE1B /* SearhField.m */; };
 		560F6F441AAD9F94002EDE1B /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F6F431AAD9F94002EDE1B /* StatusCell.m */; };
+		561DC6C11ABFFEEC00CD22CB /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 561DC6C01ABFFEEC00CD22CB /* HttpTool.m */; };
 		56333BE41AA978D1002B62AA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */; };
 		56333BE51AA978D1002B62AA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 56333BE11AA978D1002B62AA /* MBProgressHUD.bundle */; };
 		56333BE61AA978D1002B62AA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56333BE31AA978D1002B62AA /* MBProgressHUD.m */; };
@@ -151,6 +152,8 @@
 		560F6F3F1AAD732F002EDE1B /* SearhField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearhField.m; sourceTree = "<group>"; };
 		560F6F421AAD9F94002EDE1B /* StatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCell.h; sourceTree = "<group>"; };
 		560F6F431AAD9F94002EDE1B /* StatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusCell.m; sourceTree = "<group>"; };
+		561DC6BF1ABFFEEC00CD22CB /* HttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTool.h; sourceTree = "<group>"; };
+		561DC6C01ABFFEEC00CD22CB /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; };
 		56333BDF1AA978D1002B62AA /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		56333BE01AA978D1002B62AA /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		56333BE11AA978D1002B62AA /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -820,6 +823,8 @@
 				56A759211AA96CC900EB96AD /* OAuthInfo.h */,
 				56A759221AA96D2600EB96AD /* Util.h */,
 				56A759231AA96D2600EB96AD /* Util.m */,
+				561DC6BF1ABFFEEC00CD22CB /* HttpTool.h */,
+				561DC6C01ABFFEEC00CD22CB /* HttpTool.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -965,6 +970,7 @@
 				56333C321AA9A0A6002B62AA /* MKAnnotationView+WebCache.m in Sources */,
 				560F6F401AAD732F002EDE1B /* SearhField.m in Sources */,
 				56333C2F1AA9A0A6002B62AA /* MJRefreshConst.m in Sources */,
+				561DC6C11ABFFEEC00CD22CB /* HttpTool.m in Sources */,
 				56333C391AA9A0A6002B62AA /* SDWebImageManager.m in Sources */,
 				56C9BB9B1AA8A04C003DDE13 /* AFHTTPRequestOperation.m in Sources */,
 				56C2CB461AA74AEE0009480B /* ButtonWithRightIcon.m in Sources */,

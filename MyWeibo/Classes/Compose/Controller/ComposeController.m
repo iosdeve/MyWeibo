@@ -10,9 +10,9 @@
 #import "ComposeTextView.h"
 #import "Account.h"
 #import "Util.h"
-#import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "ComposeToolBar.h"
+#import "HttpTool.h"
 
 @interface ComposeController () <ComposeToolBarDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 //发微博输入框
@@ -56,15 +56,13 @@
  */
 -(void) submitStatusToServer{
     Account *account=[Util getAccount];
-    AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
-    requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
     NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
     parameters[@"source"]=AppKey;
     parameters[@"access_token"]=account.access_token;
     parameters[@"status"]=self.composeTextView.text;
-    [requestManager POST:SubmitStatusURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [HttpTool postURL:SubmitStatusURL parameter:parameters success:^(id responseObject) {
         [MBProgressHUD showSuccess:@"发送成功"];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } faile:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败"];
     }];
     
@@ -75,23 +73,26 @@
  */
 -(void) submitStatusWithPhotoToServer{
     Account *account=[Util getAccount];
-    AFHTTPRequestOperationManager *requestManager=[AFHTTPRequestOperationManager manager];
-    requestManager.responseSerializer=[AFJSONResponseSerializer serializer];
     NSMutableDictionary *parameters=[NSMutableDictionary dictionary];
     parameters[@"source"]=AppKey;
     parameters[@"access_token"]=account.access_token;
     parameters[@"status"]=self.composeTextView.text;
-    
-    [requestManager POST:SubmitStatusPhotoURL parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        NSArray *images=[self.composeTextView getPhotos];
-        for (int i=0; i<images.count; i++) {
-            UIImage *image=images[i];
-            [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.5) name:@"pic" fileName:[NSString stringWithFormat:@"%d.jpg",i] mimeType:@"image/jpeg"];
-        }
-        
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    //封装formData对象
+    NSArray *images=[self.composeTextView getPhotos];
+    NSMutableArray *formDatas=[NSMutableArray array];
+    for (int i=0; i<images.count; i++) {
+        UIImage *image=images[i];
+        FormData *formData=[[FormData alloc] init];
+        formData.mimeType=@"image/jpeg";
+        formData.parameter=@"pic";
+        formData.fileName=@"";
+        formData.data=UIImageJPEGRepresentation(image, 0.5);
+        [formDatas addObject:formData];
+    }
+
+    [HttpTool postURL:SubmitStatusPhotoURL parameter:parameters binaryDatas:formDatas success:^(id responseObject) {
         [MBProgressHUD showSuccess:@"发送成功"];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } faile:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败"];
     }];
 }
