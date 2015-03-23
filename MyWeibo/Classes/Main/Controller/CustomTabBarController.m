@@ -162,6 +162,8 @@
         self.home.tabBarItem.badgeValue=[NSString stringWithFormat:@"%d",unreadCount.status];
         self.message.tabBarItem.badgeValue=[NSString stringWithFormat:@"%d",unreadCount.messageCount];
         self.me.tabBarItem.badgeValue=[NSString stringWithFormat:@"%d",unreadCount.follower];
+        //设置app图标右上角的未读消息数
+        [UIApplication sharedApplication].applicationIconBadgeNumber=2;
         NSLog(@"%@",unreadCount);
     } faile:^(NSError *error) {
         
